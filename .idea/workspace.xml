@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="df8b66b1-8874-4d44-94b4-ff7d2f693793" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/constant/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/constant/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/constant/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d1cc0b4-4460-456f-9c94-b89f57f88c9e.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/service/CandidateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/service/CandidateServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/controller/EmployerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/controller/EmployerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/entity/Employer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/entity/Employer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/mapper/EmployerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/mapper/EmployerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/CompanyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/service/UserServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Rinekochan&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Rinekochan/JobPortalMicroservice.git&quot;,
+    &quot;accountId&quot;: &quot;0a69146c-dded-4080-aafe-cc243926d9a0&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2qQdqtIe9A38M8OZGT5S3gfUbzh" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Application.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CandidateApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmployerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;E:/JobPortalMicroservice/Employer/src/main/java/com/hoang/employer&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/JobPortalMicroservice/Employer/src/main/java/com/hoang/employer/dto&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;debugger.stepping&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.hoang.employer.service" />
+      <recent name="com.hoang.candidate.service" />
+      <recent name="com.hoang.user.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JobPortalMicroservice\Employer\src\main\java\com\hoang\employer\dto" />
+      <recent name="E:\JobPortalMicroservice\Employer\src\main\java\com\hoang\employer" />
+      <recent name="E:\JobPortalMicroservice\User\src\main\java\com\hoang\user" />
+      <recent name="E:\JobPortalMicroservice\Candidate\src\main\java\com\hoang\candidate\exception" />
+      <recent name="E:\JobPortalMicroservice\User\src\main\java\com\hoang\user\dto" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Self-Learning\Java\JobPortalMicroservice" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.hoang.employer.dto" />
+      <recent name="com.hoang.candidate.entity" />
+      <recent name="com.hoang.candidate.dto" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.EmployerApplication">
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Application" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hoang.application.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CandidateApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Candidate" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hoang.candidate.CandidateApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="ConfigServer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hoang.configserver.ConfigServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmployerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Employer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hoang.employer.EmployerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="EurekaServer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hoang.eurekaserver.EurekaServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JobApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Job" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hoang.job.JobApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="User" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hoang.user.UserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="Spring Boot.CandidateApplication" />
+      <item itemvalue="Spring Boot.ConfigServerApplication" />
+      <item itemvalue="Spring Boot.EmployerApplication" />
+      <item itemvalue="Spring Boot.EurekaServerApplication" />
+      <item itemvalue="Spring Boot.JobApplication" />
+      <item itemvalue="Spring Boot.UserApplication" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="df8b66b1-8874-4d44-94b4-ff7d2f693793" name="Changes" comment="" />
+      <created>1734598926944</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734598926944</updated>
+      <workItem from="1734598928097" duration="1000000" />
+      <workItem from="1734599943943" duration="151000" />
+      <workItem from="1734600103879" duration="450000" />
+      <workItem from="1734616340435" duration="3861000" />
+      <workItem from="1734620925005" duration="3314000" />
+      <workItem from="1734624396781" duration="175000" />
+      <workItem from="1734624584719" duration="76000" />
+      <workItem from="1734624701164" duration="2659000" />
+      <workItem from="1734627387325" duration="2569000" />
+      <workItem from="1734789199299" duration="1864000" />
+      <workItem from="1734838264548" duration="5249000" />
+      <workItem from="1734844917837" duration="143000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/controller/EmployerController.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerServiceImpl.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerServiceImpl.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

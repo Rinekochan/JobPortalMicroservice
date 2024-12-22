@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: "user"
+  main:
+    banner-mode: off
+  profiles:
+    active: "default"
+  data:
+    mongodb:
+      authentication-database: admin
+      database: user_db
+      host: localhost
+      port: 27017
+  config:
+    import: "optional:configserver:http://localhost:5000/"
+
+logging:
+  level:
+    com:
+      hoang:
+        user: INFO
+    netflix:
+      discovery: WARN

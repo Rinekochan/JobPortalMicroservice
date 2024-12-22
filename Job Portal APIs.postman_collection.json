@@ -1,0 +1,551 @@
+{
+	"info": {
+		"_postman_id": "1c418f4a-03fa-4a8f-94bd-66a8aead0efd",
+		"name": "Job Portal APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38754473"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Viet Hoang Pham\",\r\n    \"gender\": \"Male\",\r\n    \"age\": 19,\r\n    \"email\": \"viethoang9314@gmail.com\",\r\n    \"phone\": \"0481433925\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1000/api/user/create",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"api",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:1000/api/user?id=6764dba17a3a5a318e2b1a2e",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6764dba17a3a5a318e2b1a2e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:1000/api/user/all",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"api",
+								"user",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"6764dba17a3a5a318e2b1a2e\",\r\n    \"name\": \"Viet Hoang Pham\",\r\n    \"gender\": \"Male\",\r\n    \"age\": 19,\r\n    \"email\": \"viethoang9314@gmail.com\",\r\n    \"phone\": \"0481433925\",\r\n    \"createdAt\": \"2024-12-20T09:51:13.995\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1000/api/user/update",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"api",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Delete By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:1000/api/user/delete?id=67651812621291073abac9cf",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"api",
+								"user",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "67651812621291073abac9cf"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidate",
+			"item": [
+				{
+					"name": "Candidate Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"skills\": \"C#, Java, C++\",\r\n    \"experience\": \"5 years\",\r\n    \"description\": \"A random person\",\r\n    \"user\": {\r\n        \"name\": \"Viet Hoang Pham\",\r\n        \"gender\": \"Male\",\r\n        \"age\": 19,\r\n        \"email\": \"viethoang9314@gmail.com\",\r\n        \"phone\": \"0481433925\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2000/api/candidate/create",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"candidate",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Candidate Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/api/candidate?id=676518127caf970c436c7cf4",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"candidate"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "676518127caf970c436c7cf4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Candidate Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/api/candidate/all",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"candidate",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Candidate Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": \"67651e9de19d4376444b3b5f\",\r\n        \"skills\": \"C#, Java\",\r\n        \"experience\": \"5 years\",\r\n        \"description\": \"A random person\",\r\n        \"user\": {\r\n            \"id\": \"67651e9de19d4376444b3b5f\",\r\n            \"name\": \"Viet Hoang Pham\",\r\n            \"gender\": \"Male\",\r\n            \"age\": 19,\r\n            \"email\": \"viethoang9314@gmail.com\",\r\n            \"phone\": \"0481433925\",\r\n            \"createdAt\": \"2024-12-20T14:37:01.934\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2000/api/candidate/update",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"candidate",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Candidate Delete By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/api/candidate/delete?id=67651e9de19d4376444b3b5f",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"api",
+								"candidate",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "67651e9de19d4376444b3b5f"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employer & Company",
+			"item": [
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "Company Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"FPT\",\r\n  \"industry\": \"Software\",\r\n  \"location\": \"HCM City\",\r\n  \"website\": \"fpt.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:1500/api/company/create",
+									"host": [
+										"localhost"
+									],
+									"port": "1500",
+									"path": [
+										"api",
+										"company",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Company Get By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:1500/api/company?id=67653e6d53ed21743f373d05",
+									"host": [
+										"localhost"
+									],
+									"port": "1500",
+									"path": [
+										"api",
+										"company"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "67653e6d53ed21743f373d05"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Company Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:1500/api/company/all",
+									"host": [
+										"localhost"
+									],
+									"port": "1500",
+									"path": [
+										"api",
+										"company",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Company Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"67653cbd7268bf65e81ace51\",\r\n    \"name\": \"FPT\",\r\n    \"industry\": \"Software\",\r\n    \"location\": \"Ho Chi Minh City\",\r\n    \"website\": \"fpt.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:1500/api/company/update",
+									"host": [
+										"localhost"
+									],
+									"port": "1500",
+									"path": [
+										"api",
+										"company",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Company Delete By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:1500/api/company/delete?id=67653cbd7268bf65e81ace51",
+									"host": [
+										"localhost"
+									],
+									"port": "1500",
+									"path": [
+										"api",
+										"company",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "67653cbd7268bf65e81ace51"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employer",
+					"item": [
+						{
+							"name": "Employer Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\": {\r\n        \"name\": \"Viet Hoang Pham\",\r\n        \"gender\": \"Male\",\r\n        \"age\": 19,\r\n        \"email\": \"viethoang9314@gmail.com\",\r\n        \"phone\": \"0481433925\"\r\n    },\r\n    \"companyId\": \"67653cbd7268bf65e81ace51\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:1500/api/employer/create",
+									"host": [
+										"localhost"
+									],
+									"port": "1500",
+									"path": [
+										"api",
+										"employer",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employer Get By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:1000/api/user?id=6764dba17a3a5a318e2b1a2e",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"api",
+										"user"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "6764dba17a3a5a318e2b1a2e"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employer Get All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:1000/api/user/all",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"api",
+										"user",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employer Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"6764dba17a3a5a318e2b1a2e\",\r\n    \"name\": \"Viet Hoang Pham\",\r\n    \"gender\": \"Male\",\r\n    \"age\": 19,\r\n    \"email\": \"viethoang9314@gmail.com\",\r\n    \"phone\": \"0481433925\",\r\n    \"createdAt\": \"2024-12-20T09:51:13.995\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:1000/api/user/update",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"api",
+										"user",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Employer Delete By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:1000/api/user/delete?id=67651812621291073abac9cf",
+									"host": [
+										"localhost"
+									],
+									"port": "1000",
+									"path": [
+										"api",
+										"user",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "67651812621291073abac9cf"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

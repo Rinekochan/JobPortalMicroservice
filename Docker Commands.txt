@@ -1,0 +1,5 @@
+docker run -p 27017:27017 --name User -e MONGO_INITDB_ROOT_USERNAME=root -d bitnami/mongodb:latest
+docker run -p 27027:27017 --name Candidate -e MONGO_INITDB_ROOT_USERNAME=root -d bitnami/mongodb:latest
+docker run -p 27037:27017 --name Application -e MONGO_INITDB_ROOT_USERNAME=root -d bitnami/mongodb:latest
+docker run -p 27047:27017 --name Job -e MONGO_INITDB_ROOT_USERNAME=root -d bitnami/mongodb:latest
+docker run -p 3307:3306 --name Employer -e MYSQL_ROOT_PASSWORD=root -d MySQL:lastest

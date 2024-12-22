@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: "employer"
+  main:
+    banner-mode: off
+  profiles:
+    active: "default"
+  datasource:
+    url: jdbc:mysql://localhost:3307/employer_db
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+  sql:
+    init:
+      mode: always
+  config:
+    import: "optional:configserver:http://localhost:5000/"
+
+logging:
+  level:
+    com:
+      hoang:
+        user: DEBUG

@@ -1,0 +1,32 @@
+services:
+  user:
+    image: bitnami/mongodb:latest
+    container_name: User
+    ports:
+      - "27017:27017"
+
+  candidate:
+    image: bitnami/mongodb:latest
+    container_name: Candidate
+    ports:
+      - "27027:27017"
+
+  application:
+    image: bitnami/mongodb:latest
+    container_name: Application
+    ports:
+      - "27037:27017"
+
+  job:
+    image: bitnami/mongodb:latest
+    container_name: Job
+    ports:
+      - "27047:27017"
+
+  employer:
+    image: mysql:latest
+    container_name: Employer
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
