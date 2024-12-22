@@ -13,7 +13,7 @@ services:
 
   application:
     image: bitnami/mongodb:latest
-    container_name: Application
+    container_name: JobApplication
     ports:
       - "27037:27017"
 

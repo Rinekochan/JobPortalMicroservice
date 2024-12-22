@@ -1,5 +1,6 @@
 package com.hoang.employer.aspect;
 
+import com.hoang.employer.exception.ResourceNotFoundException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -25,14 +26,18 @@ public class LoggingAspect {
 
         try {
             result = joinPoint.proceed();
-        } catch (Throwable e) {
-            logger.error(e.getMessage());
+        } catch (ResourceNotFoundException ex) {
+            throw ex;
+        } catch (Throwable ex) {
+            throw new RuntimeException(
+                    "Error in method: " + joinPoint.getSignature()
+                            + " with arguments: " + java.util.Arrays.toString(joinPoint.getArgs()), ex);
+        } finally {
+            long end = System.currentTimeMillis();
+
+            logger.info("Finishing method: {}", method);
+            logger.info("Method execution time: {} seconds", (end - begin) / 1000.0);
         }
-
-        long end = System.currentTimeMillis();
-
-        logger.info("Finishing method: {}", method);
-        logger.info("Method execution time: {} seconds", (end - begin) / 1000.0);
 
         return result;
     }

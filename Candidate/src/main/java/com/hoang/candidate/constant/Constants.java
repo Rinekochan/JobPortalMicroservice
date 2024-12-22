@@ -7,4 +7,6 @@ public final class Constants {
     }
 
     public static final String CANDIDATE_TAG = "Candidate";
+
+    public static final String FEIGN_CLIENT_ERROR = "Unable to resolve User connection";
 }

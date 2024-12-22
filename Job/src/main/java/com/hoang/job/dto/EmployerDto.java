@@ -14,13 +14,11 @@ public class EmployerDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    private String id;
+
     private UserDto user;
 
-    private String company;
-
-    private String industry;
-
-    private String location;
+    private CompanyDto company;
 
     @Override
     public String toString() {

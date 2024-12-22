@@ -3,11 +3,14 @@ package com.hoang.candidate.service;
 import com.hoang.candidate.constant.Constants;
 import com.hoang.candidate.dto.CandidateDto;
 import com.hoang.candidate.entity.Candidate;
+import com.hoang.candidate.exception.FeignConnectionFailure;
 import com.hoang.candidate.exception.ResourceNotFoundException;
 import com.hoang.candidate.mapper.CandidateMapper;
 import com.hoang.candidate.repository.CandidateRepository;
 import com.hoang.candidate.service.client.UserFeignClient;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,6 +53,13 @@ public class CandidateServiceImpl implements CandidateService {
 
         candidateDto.getUser().setId(candidate.getId());
 
+        HttpStatusCode statusCode = userFeignClient.createUser(candidateDto.getUser()).getStatusCode();
+
+        if(statusCode == HttpStatus.SERVICE_UNAVAILABLE) { // If we can't create User, don't create Candidate
+            candidateRepository.delete(candidate);
+            throw new FeignConnectionFailure("There's a problem connecting with User, aborting operation");
+        }
+
         userFeignClient.createUser(candidateDto.getUser());
 
         return candidate;
@@ -61,9 +71,8 @@ public class CandidateServiceImpl implements CandidateService {
 
         String candidateId = candidateDto.getId();
 
-        Candidate candidate = candidateRepository.getCandidateById(candidateId).orElseThrow(
-                () -> new ResourceNotFoundException(Constants.CANDIDATE_TAG, "ID", candidateId)
-        );
+        Candidate candidate = CandidateMapper.mapToCandidate(getCandidate(candidateId));
+
         Candidate candidateFromDto = CandidateMapper.mapToCandidate(candidateDto);
 
         if(candidate.equals(candidateFromDto)) { // If there's nothing different, don't call update
@@ -83,9 +92,13 @@ public class CandidateServiceImpl implements CandidateService {
     public boolean deleteCandidate(String id) {
         boolean isDeleted = false;
 
-        Candidate candidate = candidateRepository.getCandidateById(id).orElseThrow(
-                () -> new ResourceNotFoundException(Constants.CANDIDATE_TAG, "ID", id)
-        );
+        Candidate candidate = CandidateMapper.mapToCandidate(getCandidate(id));
+
+        HttpStatusCode statusCode = userFeignClient.getUser(id).getStatusCode();
+
+        if(statusCode == HttpStatus.SERVICE_UNAVAILABLE) { // If we can't delete User, don't delete Candidate
+            throw new FeignConnectionFailure("There's a problem connecting with User, aborting operation");
+        }
 
         userFeignClient.deleteUser(candidate.getId());
 

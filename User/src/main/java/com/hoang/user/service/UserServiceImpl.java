@@ -47,11 +47,16 @@ public class UserServiceImpl implements UserService {
     public boolean updateUser(UserDto userDto) {
         boolean isUpdated = false;
 
-        userRepository.getUserById(userDto.getId()).orElseThrow(
+        User user = userRepository.getUserById(userDto.getId()).orElseThrow(
                 () -> new ResourceNotFoundException(Constants.USER_TAG, "ID", userDto.getId())
         );
+        User userFromDto = UserMapper.mapToUser(userDto);
 
-        userRepository.save(UserMapper.mapToUser(userDto));
+        if(user.equals(userFromDto)) { // If there's nothing different, don't call update
+            return !isUpdated;
+        }
+
+        userRepository.save(userFromDto);
         return !isUpdated;
     }
 

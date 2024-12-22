@@ -1,14 +1,18 @@
 package com.hoang.employer.service;
 
 import com.hoang.employer.constant.Constants;
-import com.hoang.employer.dto.EmployerDto;
+import com.hoang.employer.dto.EmployerEagerDto;
+import com.hoang.employer.dto.EmployerLazyDto;
 import com.hoang.employer.entity.Employer;
+import com.hoang.employer.exception.FeignConnectionFailure;
 import com.hoang.employer.exception.ResourceNotFoundException;
 import com.hoang.employer.mapper.EmployerMapper;
 import com.hoang.employer.repository.EmployerRepository;
 import com.hoang.employer.service.client.UserFeignClient;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,59 +27,67 @@ public class EmployerServiceImpl implements EmployerService {
     private final UserFeignClient userFeignClient;
 
     @Override
-    public EmployerDto getEmployer(String id) {
+    public EmployerEagerDto getEmployer(String id) {
 
-        EmployerDto employerDto = EmployerMapper.mapToEmployerDto(employerRepository.getEmployerById((id)).orElseThrow(
+        EmployerEagerDto employerEagerDto = EmployerMapper.mapToEmployerDto(employerRepository.getEmployerById((id)).orElseThrow(
                 () -> new ResourceNotFoundException(Constants.EMPLOYER_TAG, "ID", id)
         ));
 
-        employerDto.setUser(userFeignClient.getUser(id).getBody());
+        employerEagerDto.setUser(userFeignClient.getUser(id).getBody());
 
-        return employerDto;
+        return employerEagerDto;
     }
 
     @Override
-    public List<EmployerDto> getAllEmployers() {
+    public List<EmployerLazyDto> getAllEmployers() {
         return employerRepository.findAll()
                 .stream()
                 .map(employer -> {
-                    EmployerDto employerDto = EmployerMapper.mapToEmployerDto(employer);
-                    employerDto.setUser(userFeignClient.getUser(employerDto.getId()).getBody());
-                    return employerDto;
+                    EmployerEagerDto employerEagerDto = EmployerMapper.mapToEmployerDto(employer);
+                    employerEagerDto.setUser(userFeignClient.getUser(employer.getId()).getBody());
+
+                    return EmployerLazyDto.builder()
+                            .id(employerEagerDto.getId())
+                            .user(employerEagerDto.getUser())
+                            .companyId(employerEagerDto.getCompany().getId())
+                            .build();
                 })
                 .toList();
     }
 
     @Override
-    public Employer createEmployer(EmployerDto employerDto) {
-        Employer employer = employerRepository.save(EmployerMapper.mapToEmployer(employerDto));
+    public Employer createEmployer(EmployerEagerDto employerEagerDto) {
+        Employer employer = employerRepository.save(EmployerMapper.mapToEmployer(employerEagerDto));
 
-        employerDto.getUser().setId(employer.getId());
+        employerEagerDto.getUser().setId(employer.getId());
 
-        userFeignClient.createUser(employerDto.getUser());
+        HttpStatusCode statusCode = userFeignClient.createUser(employerEagerDto.getUser()).getStatusCode();
+
+        if(statusCode == HttpStatus.SERVICE_UNAVAILABLE) { // If we can't create User, don't create Employer
+            throw new FeignConnectionFailure("There's a problem connecting with User, aborting operation");
+        }
 
         return employer;
     }
 
     @Override
-    public boolean updateEmployer(EmployerDto employerDto) {
+    public boolean updateEmployer(EmployerEagerDto employerEagerDto) {
         boolean isUpdated = false;
 
-        String employerId = employerDto.getId();
+        String employerId = employerEagerDto.getId();
 
-        Employer employer = employerRepository.getEmployerById(employerId).orElseThrow(
-                () -> new ResourceNotFoundException(Constants.EMPLOYER_TAG, "ID", employerId)
-        );
-        Employer employerFromDto = EmployerMapper.mapToEmployer(employerDto);
+        Employer employer = EmployerMapper.mapToEmployer(getEmployer(employerId));
+
+        Employer employerFromDto = EmployerMapper.mapToEmployer(employerEagerDto);
 
         if(employer.equals(employerFromDto)) { // If there's nothing different, don't call update
             return !isUpdated;
         }
 
-        employerRepository.save(EmployerMapper.mapToEmployer(employerDto));
+        employerRepository.save(employerFromDto);
 
-        if(employerDto.getUser() != null) {
-            userFeignClient.updateUser(employerDto.getUser());
+        if(employerEagerDto.getUser() != null) {
+            userFeignClient.updateUser(employerEagerDto.getUser());
         }
 
         return !isUpdated;
@@ -85,9 +97,13 @@ public class EmployerServiceImpl implements EmployerService {
     public boolean deleteEmployer(String id) {
         boolean isDeleted = false;
 
-        Employer employer = employerRepository.getEmployerById(id).orElseThrow(
-                () -> new ResourceNotFoundException(Constants.EMPLOYER_TAG, "ID", id)
-        );
+        Employer employer = EmployerMapper.mapToEmployer(getEmployer(id));
+
+        HttpStatusCode statusCode = userFeignClient.getUser(id).getStatusCode();
+
+        if(statusCode == HttpStatus.SERVICE_UNAVAILABLE) { // If we can't delete User, don't delete Employer
+            throw new FeignConnectionFailure("There's a problem connecting with User, aborting operation");
+        }
 
         userFeignClient.deleteUser(id);
 

@@ -1,6 +1,7 @@
 package com.hoang.employer.service;
 
-import com.hoang.employer.dto.EmployerDto;
+import com.hoang.employer.dto.EmployerEagerDto;
+import com.hoang.employer.dto.EmployerLazyDto;
 import com.hoang.employer.entity.Employer;
 
 import java.util.List;
@@ -16,14 +17,14 @@ public interface EmployerService {
      * @param id the id
      * @return the employer
      */
-    EmployerDto getEmployer(String id);
+    EmployerEagerDto getEmployer(String id);
 
     /**
      * Gets all employers.
      *
      * @return the all employers
      */
-    List<EmployerDto> getAllEmployers();
+    List<EmployerLazyDto> getAllEmployers();
 
     /**
      * Create employer.
@@ -31,7 +32,7 @@ public interface EmployerService {
      * @param userDto the user dto
      * @return the employer
      */
-    Employer createEmployer(EmployerDto userDto);
+    Employer createEmployer(EmployerEagerDto userDto);
 
     /**
      * Update employer.
@@ -39,7 +40,7 @@ public interface EmployerService {
      * @param userDto the user dto
      * @return the boolean
      */
-    boolean updateEmployer(EmployerDto userDto);
+    boolean updateEmployer(EmployerEagerDto userDto);
 
     /**
      * Delete employer.

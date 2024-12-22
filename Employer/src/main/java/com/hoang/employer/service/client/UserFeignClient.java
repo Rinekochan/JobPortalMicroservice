@@ -2,11 +2,12 @@ package com.hoang.employer.service.client;
 
 import com.hoang.employer.dto.ResponseDto;
 import com.hoang.employer.dto.UserDto;
+import com.hoang.employer.service.client.fallback.UserFallbackFeign;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient("user")
+@FeignClient(name = "user", fallback = UserFallbackFeign.class)
 public interface UserFeignClient {
 
     @GetMapping(value = "api/user", consumes = "application/json")

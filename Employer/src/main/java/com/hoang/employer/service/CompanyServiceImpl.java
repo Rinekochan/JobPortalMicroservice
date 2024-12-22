@@ -44,16 +44,15 @@ public class CompanyServiceImpl implements CompanyService {
     public boolean updateCompany(CompanyDto companyDto) {
         boolean isUpdated = false;
 
-        Company company = companyRepository.getCompanyById(companyDto.getId()).orElseThrow(
-                () -> new ResourceNotFoundException(Constants.COMPANY_TAG, "ID", companyDto.getId())
-        );
+        Company company = CompanyMapper.mapToCompany(getCompany(companyDto.getId()));
+
         Company companyFromDto = CompanyMapper.mapToCompany(companyDto);
 
         if(company.equals(companyFromDto)) { // If there's nothing different, don't call update
             return !isUpdated;
         }
 
-        companyRepository.save(CompanyMapper.mapToCompany(companyDto));
+        companyRepository.save(companyFromDto);
 
         return !isUpdated;
     }
@@ -62,9 +61,7 @@ public class CompanyServiceImpl implements CompanyService {
     public boolean deleteCompany(String id) {
         boolean isDeleted = false;
 
-        Company company = companyRepository.getCompanyById(id).orElseThrow(
-                () -> new ResourceNotFoundException(Constants.COMPANY_TAG, "ID", id)
-        );
+        Company company =  CompanyMapper.mapToCompany(getCompany(id));
 
         companyRepository.deleteCompanyById(company.getId());
 

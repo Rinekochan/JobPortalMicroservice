@@ -1,12 +1,14 @@
 package com.hoang.employer.controller;
 
-import com.hoang.employer.dto.EmployerRequestDto;
-import com.hoang.employer.dto.EmployerDto;
+import com.hoang.employer.dto.EmployerLazyDto;
+import com.hoang.employer.dto.EmployerEagerDto;
 import com.hoang.employer.dto.ResponseDto;
 import com.hoang.employer.entity.Employer;
 import com.hoang.employer.exception.ResourceNotFoundException;
 import com.hoang.employer.service.CompanyService;
 import com.hoang.employer.service.EmployerService;
+import io.github.resilience4j.retry.annotation.Retry;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,28 +27,51 @@ public class EmployerController {
 
     private final CompanyService companyService;
 
+    /**
+     * Gets employer.
+     *
+     * @param id the id
+     * @return the employer
+     */
+    @Operation(summary = "GET EMPLOYER BY ID")
     @GetMapping
-    public ResponseEntity<EmployerDto> getEmployer(@RequestParam String id) {
+    @Retry(name = "getEmployer", fallbackMethod = "serviceUnavailableFallback")
+    public ResponseEntity<EmployerEagerDto> getEmployer(@RequestParam String id) {
         return ResponseEntity.status(HttpStatus.OK).body(employerService.getEmployer(id));
     }
 
+    /**
+     * Gets all employers.
+     *
+     * @return the all employers
+     */
+    @Operation(summary = "GET ALL EMPLOYERS")
     @GetMapping("/all")
-    public ResponseEntity<List<EmployerDto>> getAllEmployers() {
+    @Retry(name = "getAllEmployers", fallbackMethod = "serviceUnavailableFallback")
+    public ResponseEntity<List<EmployerLazyDto>> getAllEmployers() {
         return ResponseEntity.status(HttpStatus.OK).body(employerService.getAllEmployers());
     }
 
+    /**
+     * Create employer response entity.
+     *
+     * @param employerLazyDto the employer lazy dto
+     * @return the response entity
+     */
+    @Operation(summary = "CREATE EMPLOYER")
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createEmployer(@RequestBody EmployerRequestDto employerRequestDto) {
+    @Retry(name = "createEmployer", fallbackMethod = "serviceUnavailableFallback")
+    public ResponseEntity<ResponseDto> createEmployer(@RequestBody EmployerLazyDto employerLazyDto) {
 
-        EmployerDto employerValid;
+        EmployerEagerDto employerValid;
 
         try {
-            employerValid = EmployerDto.builder()
-                    .user(employerRequestDto.getUser())
-                    .company(companyService.getCompany(employerRequestDto.getCompanyId()))
+            employerValid = EmployerEagerDto.builder()
+                    .user(employerLazyDto.getUser())
+                    .company(companyService.getCompany(employerLazyDto.getCompanyId()))
                     .build();
-        } catch(ResourceNotFoundException e) {
-            throw new ResourceNotFoundException("Company", "Id", employerRequestDto.getCompanyId());
+        } catch (ResourceNotFoundException e) {
+            throw new ResourceNotFoundException("Company", "Id", employerLazyDto.getCompanyId());
         }
 
         Employer employer = employerService.createEmployer(employerValid);
@@ -60,18 +85,26 @@ public class EmployerController {
                 );
     }
 
+    /**
+     * Update employer response entity.
+     *
+     * @param employerLazyDto the employer lazy dto
+     * @return the response entity
+     */
+    @Operation(summary = "UPDATE EMPLOYER")
+    @Retry(name = "updateEmployer", fallbackMethod = "serviceUnavailableFallback")
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateEmployer(@RequestBody EmployerRequestDto employerRequestDto) {
+    public ResponseEntity<ResponseDto> updateEmployer(@RequestBody EmployerLazyDto employerLazyDto) {
 
-        EmployerDto employerValid;
+        EmployerEagerDto employerValid;
         try {
-            employerValid = EmployerDto.builder()
-                    .id(employerRequestDto.getId())
-                    .user(employerRequestDto.getUser())
-                    .company(companyService.getCompany(employerRequestDto.getCompanyId()))
+            employerValid = EmployerEagerDto.builder()
+                    .id(employerLazyDto.getId())
+                    .user(employerLazyDto.getUser())
+                    .company(companyService.getCompany(employerLazyDto.getCompanyId()))
                     .build();
-        } catch(ResourceNotFoundException e) {
-            throw new ResourceNotFoundException("Company", "Id", employerRequestDto.getCompanyId());
+        } catch (ResourceNotFoundException e) {
+            throw new ResourceNotFoundException("Company", "Id", employerLazyDto.getCompanyId());
         }
 
         boolean isUpdated = employerService.updateEmployer(employerValid);
@@ -92,6 +125,14 @@ public class EmployerController {
         }
     }
 
+    /**
+     * Delete employer response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
+    @Operation(summary = "DELETE EMPLOYER")
+    @Retry(name = "deleteEmployer", fallbackMethod = "serviceUnavailableFallback")
     @DeleteMapping("/delete")
     public ResponseEntity<ResponseDto> deleteEmployer(@RequestParam String id) {
         boolean isDeleted = employerService.deleteEmployer(id);
@@ -110,5 +151,15 @@ public class EmployerController {
                             .statusMsg("Delete operation failed")
                             .build());
         }
+    }
+
+    /**
+     * Service unavailable fallback response entity.
+     *
+     * @param throwable the throwable
+     * @return the response entity
+     */
+    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Throwable throwable) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
     }
 }

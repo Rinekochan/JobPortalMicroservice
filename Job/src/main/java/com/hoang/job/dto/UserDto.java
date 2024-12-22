@@ -7,15 +7,16 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
-@Data @Builder
+@Data
+@Builder
 public class UserDto implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
+    private String id;
 
     private String name;
 
@@ -26,6 +27,8 @@ public class UserDto implements Serializable {
     private String email;
 
     private String phone;
+
+    private LocalDateTime createdAt;
 
     @Override
     public String toString() {

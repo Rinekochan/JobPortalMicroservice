@@ -2,20 +2,22 @@ package com.hoang.job.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.UUID;
 
-@Entity
-@Getter @Setter @ToString @Builder
-@NoArgsConstructor @AllArgsConstructor
-@Table(name = "job")
+@Getter
+@Setter
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(value = "job_db")
 public class Job {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @MongoId
+    private String id;
 
     private String title;
 
@@ -28,15 +30,9 @@ public class Job {
     private String location;
 
     @CreatedDate
-    @Column(updatable = false)
     private LocalDateTime postedDate;
 
-    @ManyToOne
-    @JoinColumn(name = "posted_by", updatable = false)
-    private Employer postedBy;
+    private String postedBy;
 
     private LocalDateTime expiryDate;
-
-    @OneToMany(mappedBy = "job")
-    private List<Application> applications;
 }

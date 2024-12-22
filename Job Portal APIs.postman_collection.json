@@ -44,7 +44,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:1000/api/user?id=6764dba17a3a5a318e2b1a2e",
+							"raw": "localhost:1000/api/user?id=67679144d915a2249a5420ef",
 							"host": [
 								"localhost"
 							],
@@ -56,7 +56,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "6764dba17a3a5a318e2b1a2e"
+									"value": "67679144d915a2249a5420ef"
 								}
 							]
 						}
@@ -178,7 +178,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:2000/api/candidate?id=676518127caf970c436c7cf4",
+							"raw": "localhost:2000/api/candidate?id=67679144d915a2249a5420ef",
 							"host": [
 								"localhost"
 							],
@@ -190,7 +190,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "676518127caf970c436c7cf4"
+									"value": "67679144d915a2249a5420ef"
 								}
 							]
 						}
@@ -224,7 +224,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n        \"id\": \"67651e9de19d4376444b3b5f\",\r\n        \"skills\": \"C#, Java\",\r\n        \"experience\": \"5 years\",\r\n        \"description\": \"A random person\",\r\n        \"user\": {\r\n            \"id\": \"67651e9de19d4376444b3b5f\",\r\n            \"name\": \"Viet Hoang Pham\",\r\n            \"gender\": \"Male\",\r\n            \"age\": 19,\r\n            \"email\": \"viethoang9314@gmail.com\",\r\n            \"phone\": \"0481433925\",\r\n            \"createdAt\": \"2024-12-20T14:37:01.934\"\r\n        }\r\n    }",
+							"raw": "{\r\n    \"id\": \"67679144d915a2249a5420ef\",\r\n    \"skills\": \"C#, Java\",\r\n    \"experience\": \"5 years\",\r\n    \"description\": \"A random person\",\r\n    \"user\": {\r\n        \"id\": \"67679144d915a2249a5420ef\",\r\n        \"name\": \"Viet Hoang\",\r\n        \"gender\": \"Male\",\r\n        \"age\": 19,\r\n        \"email\": \"viethoang9314@gmail.com\",\r\n        \"phone\": \"0481433925\",\r\n        \"createdAt\": \"2024-12-22T11:10:44.861\"\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -287,7 +287,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"name\": \"FPT\",\r\n  \"industry\": \"Software\",\r\n  \"location\": \"HCM City\",\r\n  \"website\": \"fpt.com\"\r\n}",
+									"raw": "{\r\n  \"name\": \"Microsoft\",\r\n  \"industry\": \"Software\",\r\n  \"location\": \"Silicon Valley\",\r\n  \"website\": \"microsoft.com\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -315,7 +315,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:1500/api/company?id=67653e6d53ed21743f373d05",
+									"raw": "localhost:1500/api/company?id=67679692c697ad04c9fe404a",
 									"host": [
 										"localhost"
 									],
@@ -327,7 +327,7 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "67653e6d53ed21743f373d05"
+											"value": "67679692c697ad04c9fe404a"
 										}
 									]
 								}
@@ -421,7 +421,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"user\": {\r\n        \"name\": \"Viet Hoang Pham\",\r\n        \"gender\": \"Male\",\r\n        \"age\": 19,\r\n        \"email\": \"viethoang9314@gmail.com\",\r\n        \"phone\": \"0481433925\"\r\n    },\r\n    \"companyId\": \"67653cbd7268bf65e81ace51\"\r\n}",
+									"raw": "{\r\n    \"user\": {\r\n        \"name\": \"Viet Hoang Pham P4\",\r\n        \"gender\": \"Male\",\r\n        \"age\": 19,\r\n        \"email\": \"viethoang9314@gmail.com\",\r\n        \"phone\": \"0481433925\"\r\n    },\r\n    \"companyId\": \"6768328b52fb45459dc1c847\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -449,19 +449,19 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:1000/api/user?id=6764dba17a3a5a318e2b1a2e",
+									"raw": "localhost:1500/api/employer?id=67679913b9731a01d33eaced",
 									"host": [
 										"localhost"
 									],
-									"port": "1000",
+									"port": "1500",
 									"path": [
 										"api",
-										"user"
+										"employer"
 									],
 									"query": [
 										{
 											"key": "id",
-											"value": "6764dba17a3a5a318e2b1a2e"
+											"value": "67679913b9731a01d33eaced"
 										}
 									]
 								}
@@ -474,14 +474,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:1000/api/user/all",
+									"raw": "localhost:1500/api/employer/all",
 									"host": [
 										"localhost"
 									],
-									"port": "1000",
+									"port": "1500",
 									"path": [
 										"api",
-										"user",
+										"employer",
 										"all"
 									]
 								}
@@ -495,7 +495,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": \"6764dba17a3a5a318e2b1a2e\",\r\n    \"name\": \"Viet Hoang Pham\",\r\n    \"gender\": \"Male\",\r\n    \"age\": 19,\r\n    \"email\": \"viethoang9314@gmail.com\",\r\n    \"phone\": \"0481433925\",\r\n    \"createdAt\": \"2024-12-20T09:51:13.995\"\r\n}",
+									"raw": "{\r\n    \"id\": \"67679913b9731a01d33eaced\",\r\n    \"user\": {\r\n        \"id\": \"67679913b9731a01d33eaced\",\r\n        \"name\": \"Viet Hoang Pham\",\r\n        \"gender\": \"Male\",\r\n        \"age\": 19,\r\n        \"email\": \"viethoang@gmail.com\",\r\n        \"phone\": \"0481433925\",\r\n        \"createdAt\": \"2024-12-22T11:29:34.619\"\r\n    },\r\n    \"companyId\": \"6767918b9a1ff32275464b2d\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -503,14 +503,14 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:1000/api/user/update",
+									"raw": "localhost:1500/api/employer/update",
 									"host": [
 										"localhost"
 									],
-									"port": "1000",
+									"port": "1500",
 									"path": [
 										"api",
-										"user",
+										"employer",
 										"update"
 									]
 								}
@@ -523,20 +523,20 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:1000/api/user/delete?id=67651812621291073abac9cf",
+									"raw": "localhost:1500/api/employer/delete?id=676795925e95ba1ec71eb09f",
 									"host": [
 										"localhost"
 									],
-									"port": "1000",
+									"port": "1500",
 									"path": [
 										"api",
-										"user",
+										"employer",
 										"delete"
 									],
 									"query": [
 										{
 											"key": "id",
-											"value": "67651812621291073abac9cf"
+											"value": "676795925e95ba1ec71eb09f"
 										}
 									]
 								}
@@ -544,6 +544,444 @@
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Job",
+			"item": [
+				{
+					"name": "Job Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Java Backend Enginner P5\",\r\n  \"description\": \"A backend position\",\r\n  \"requirement\": \"10+ year\",\r\n  \"salary\": \"20.000$/a\",\r\n  \"location\": \"North Pole\",\r\n  \"postedBy\": \"676832b452fb45459dc1c849\",\r\n  \"expiryDate\": \"2024-12-22T18:01:30.991Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2500/api/job/create",
+							"host": [
+								"localhost"
+							],
+							"port": "2500",
+							"path": [
+								"api",
+								"job",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2500/api/job?id=67683120dd227646483d87bc",
+							"host": [
+								"localhost"
+							],
+							"port": "2500",
+							"path": [
+								"api",
+								"job"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "67683120dd227646483d87bc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2500/api/job/all",
+							"host": [
+								"localhost"
+							],
+							"port": "2500",
+							"path": [
+								"api",
+								"job",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Get All By Posted By",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2500/api/job/filter/posted-by?id=676832ba52fb45459dc1c84a",
+							"host": [
+								"localhost"
+							],
+							"port": "2500",
+							"path": [
+								"api",
+								"job",
+								"filter",
+								"posted-by"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "676832ba52fb45459dc1c84a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Get All By Company Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2500/api/job/filter/company?id=6768328b52fb45459dc1c847",
+							"host": [
+								"localhost"
+							],
+							"port": "2500",
+							"path": [
+								"api",
+								"job",
+								"filter",
+								"company"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6768328b52fb45459dc1c847"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"67683120dd227646483d87bc\",\r\n    \"title\": \".NET Backend Enginner\",\r\n    \"description\": \"A backend position\",\r\n    \"requirement\": \"10+ year\",\r\n    \"salary\": \"20.000$/a\",\r\n    \"location\": \"North Pole\",\r\n    \"postedDate\": \"2024-12-22T22:14:57.653\",\r\n    \"postedBy\": \"67679913b9731a01d33eaced\",\r\n    \"expiryDate\": \"2024-12-22T23:01:30.991\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2500/api/job/update",
+							"host": [
+								"localhost"
+							],
+							"port": "2500",
+							"path": [
+								"api",
+								"job",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:2500/api/job/delete?id=67682cf10ec06f71fafcca20",
+							"host": [
+								"localhost"
+							],
+							"port": "2500",
+							"path": [
+								"api",
+								"job",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "67682cf10ec06f71fafcca20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Application",
+			"item": [
+				{
+					"name": "Job Application Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {\r\n    \"jobId\": \"67683120dd227646483d87bc\",\r\n    \"candidateId\": \"67679144d915a2249a5420ef\"\r\n  },\r\n  \"status\": \"SUBMITTED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/application/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"application",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Application Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/application?jobId=67683120dd227646483d87bc&candidateId=67679144d915a2249a5420ef",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"application"
+							],
+							"query": [
+								{
+									"key": "jobId",
+									"value": "67683120dd227646483d87bc"
+								},
+								{
+									"key": "candidateId",
+									"value": "67679144d915a2249a5420ef"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Application Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/application/all",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"application",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Application Get All By Candidate Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/application/filter/candidate?id=676832ba52fb45459dc1c84a",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"application",
+								"filter",
+								"candidate"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "676832ba52fb45459dc1c84a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Application Get All By Job Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/application/filter/job?id=6768328b52fb45459dc1c847",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"application",
+								"filter",
+								"job"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6768328b52fb45459dc1c847"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Application Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"67683120dd227646483d87bc\",\r\n    \"title\": \".NET Backend Enginner\",\r\n    \"description\": \"A backend position\",\r\n    \"requirement\": \"10+ year\",\r\n    \"salary\": \"20.000$/a\",\r\n    \"location\": \"North Pole\",\r\n    \"postedDate\": \"2024-12-22T22:14:57.653\",\r\n    \"postedBy\": \"67679913b9731a01d33eaced\",\r\n    \"expiryDate\": \"2024-12-22T23:01:30.991\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/application/update",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"application",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Application Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/application/delete?jobId=67682cf10ec06f71fafcca20&candidateId=67682cf10ec06f71fafcca20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"application",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "jobId",
+									"value": "67682cf10ec06f71fafcca20"
+								},
+								{
+									"key": "candidateId",
+									"value": "67682cf10ec06f71fafcca20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Application Delete All By Candidate Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/application/delete/candidate?id=67682cf10ec06f71fafcca20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"application",
+								"delete",
+								"candidate"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "67682cf10ec06f71fafcca20"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Job Application Delete All By Job Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/application/delete/job?id=67682cf10ec06f71fafcca20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"application",
+								"delete",
+								"job"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "67682cf10ec06f71fafcca20"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
