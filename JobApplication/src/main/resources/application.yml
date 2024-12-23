@@ -1,6 +1,6 @@
 spring:
   application:
-    name: "job_application"
+    name: "job-application"
   main:
     banner-mode: off
   profiles:

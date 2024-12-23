@@ -1,5 +1,6 @@
 package com.hoang.jobapplication.controller;
 
+import com.hoang.jobapplication.constant.Constants;
 import com.hoang.jobapplication.dto.JobApplicationEagerDto;
 import com.hoang.jobapplication.dto.JobApplicationLazyDto;
 import com.hoang.jobapplication.dto.ResponseDto;
@@ -8,6 +9,7 @@ import com.hoang.jobapplication.service.JobApplicationService;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -84,7 +86,7 @@ public class JobApplicationController {
     @Operation(summary = "CREATE JOB APPLICATION")
     @PostMapping("/create")
     @Retry(name = "createJobApplication", fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> createJobApplication(@RequestBody JobApplicationLazyDto jobApplicationLazyDto) {
+    public ResponseEntity<ResponseDto> createJobApplication(@Valid @RequestBody JobApplicationLazyDto jobApplicationLazyDto) {
         JobApplication jobApplication = jobApplicationService.createJobApplication(jobApplicationLazyDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -104,7 +106,7 @@ public class JobApplicationController {
     @Operation(summary = "UPDATE JOB APPLICATION")
     @PutMapping("/update")
     @Retry(name = "updateJobApplication", fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> updateJobApplication(@RequestBody JobApplicationLazyDto jobApplicationLazyDto) {
+    public ResponseEntity<ResponseDto> updateJobApplication(@Valid @RequestBody JobApplicationLazyDto jobApplicationLazyDto) {
         boolean isUpdated = jobApplicationService.updateJobApplication(jobApplicationLazyDto);
         if (isUpdated) {
             return ResponseEntity
@@ -140,14 +142,14 @@ public class JobApplicationController {
                     .status(HttpStatus.OK)
                     .body(ResponseDto.builder()
                             .statusCode("200")
-                            .statusMsg("Delete request processed successfully")
+                            .statusMsg(Constants.DELETE_SUCCESSFUL_TAG)
                             .build());
         } else {
             return ResponseEntity
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(ResponseDto.builder()
                             .statusCode("417")
-                            .statusMsg("Delete operation failed")
+                            .statusMsg(Constants.DELETE_FAILED_TAG)
                             .build());
         }
     }
@@ -168,14 +170,14 @@ public class JobApplicationController {
                     .status(HttpStatus.OK)
                     .body(ResponseDto.builder()
                             .statusCode("200")
-                            .statusMsg("Delete request processed successfully")
+                            .statusMsg(Constants.DELETE_SUCCESSFUL_TAG)
                             .build());
         } else {
             return ResponseEntity
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(ResponseDto.builder()
                             .statusCode("417")
-                            .statusMsg("Delete operation failed")
+                            .statusMsg(Constants.DELETE_FAILED_TAG)
                             .build());
         }
     }
@@ -196,14 +198,14 @@ public class JobApplicationController {
                     .status(HttpStatus.OK)
                     .body(ResponseDto.builder()
                             .statusCode("200")
-                            .statusMsg("Delete request processed successfully")
+                            .statusMsg(Constants.DELETE_SUCCESSFUL_TAG)
                             .build());
         } else {
             return ResponseEntity
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(ResponseDto.builder()
                             .statusCode("417")
-                            .statusMsg("Delete operation failed")
+                            .statusMsg(Constants.DELETE_FAILED_TAG)
                             .build());
         }
     }
@@ -211,10 +213,14 @@ public class JobApplicationController {
     /**
      * Service unavailable fallback response entity.
      *
-     * @param throwable the throwable
+     * @param ex the exception
      * @return the response entity
      */
-    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Throwable throwable) {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
+    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Exception ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(
+                ResponseDto.builder()
+                        .statusCode("503")
+                        .statusMsg(ex.getMessage() + " with the error message: " + ex.getCause().getMessage())
+                        .build());
     }
 }

@@ -7,6 +7,7 @@ import com.hoang.user.service.UserService;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -56,7 +57,7 @@ public class UserController {
     @Operation(summary = "CREATE USER")
     @PostMapping("/create")
     @Retry(name = "createUser",fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> createUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<ResponseDto> createUser(@Valid @RequestBody UserDto userDto) {
         User user = userService.createUser(userDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -76,7 +77,7 @@ public class UserController {
     @Operation(summary = "UPDATE USER")
     @PutMapping("/update")
     @Retry(name = "updateUser",fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> updateUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<ResponseDto> updateUser(@Valid @RequestBody UserDto userDto) {
         boolean isUpdated = userService.updateUser(userDto);
         if (isUpdated) {
             return ResponseEntity
@@ -126,10 +127,14 @@ public class UserController {
     /**
      * Service unavailable fallback response entity.
      *
-     * @param throwable the throwable
+     * @param ex the exception
      * @return the response entity
      */
-    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Throwable throwable) {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
+    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Exception ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(
+                ResponseDto.builder()
+                        .statusCode("503")
+                        .statusMsg(ex.getMessage() + " with the error message: " + ex.getCause().getMessage())
+                        .build());
     }
 }

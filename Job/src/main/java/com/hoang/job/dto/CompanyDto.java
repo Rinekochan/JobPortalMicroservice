@@ -1,5 +1,7 @@
 package com.hoang.job.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -16,12 +18,20 @@ public class CompanyDto implements Serializable {
 
     private String id;
 
+    @NotEmpty(message = "Name can not be a null or empty")
+    @Size(max = 50, message = "The length of the name should not be bigger than 50 chars")
     private String name;
 
+    @NotEmpty(message = "Industry can not be a null or empty")
+    @Size(max = 50, message = "The length of the industry should not be bigger than 50 chars")
     private String industry;
 
+    @NotEmpty(message = "Location can not be a null or empty")
+    @Size(max = 50, message = "The length of the location should not be bigger than 50 chars")
     private String location;
 
+    @NotEmpty(message = "Website can not be a null or empty")
+    @Size(max = 150, message = "The length of the website should not be bigger than 150 chars")
     private String website;
 
     @Override

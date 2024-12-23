@@ -12,7 +12,7 @@ eureka:
 
 info:
   app:
-    name: "job_application"
+    name: "job-application"
     description: "Job Application Portal Job Microservice"
     version: "1.0.0"
 

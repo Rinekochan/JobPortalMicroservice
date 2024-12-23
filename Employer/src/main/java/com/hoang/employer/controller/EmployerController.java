@@ -10,6 +10,7 @@ import com.hoang.employer.service.EmployerService;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The type Employer controller.
+ */
 @Tag(name = "Employer CRUD REST APIs")
 @RestController
 @AllArgsConstructor
@@ -53,6 +57,19 @@ public class EmployerController {
     }
 
     /**
+     * Gets all employers by company id.
+     *
+     * @param id the company id
+     * @return the all employers by company id
+     */
+    @Operation(summary = "GET ALL EMPLOYERS BY COMPANY ID")
+    @GetMapping("/filter/company")
+    @Retry(name = "getAllEmployersByCompanyId", fallbackMethod = "serviceUnavailableFallback")
+    public ResponseEntity<List<EmployerLazyDto>> getAllEmployersByCompanyId(@RequestParam String id) {
+        return ResponseEntity.status(HttpStatus.OK).body(employerService.getAllEmployersByCompanyId(id));
+    }
+
+    /**
      * Create employer response entity.
      *
      * @param employerLazyDto the employer lazy dto
@@ -61,7 +78,7 @@ public class EmployerController {
     @Operation(summary = "CREATE EMPLOYER")
     @PostMapping("/create")
     @Retry(name = "createEmployer", fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> createEmployer(@RequestBody EmployerLazyDto employerLazyDto) {
+    public ResponseEntity<ResponseDto> createEmployer(@Valid @RequestBody EmployerLazyDto employerLazyDto) {
 
         EmployerEagerDto employerValid;
 
@@ -94,7 +111,7 @@ public class EmployerController {
     @Operation(summary = "UPDATE EMPLOYER")
     @Retry(name = "updateEmployer", fallbackMethod = "serviceUnavailableFallback")
     @PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateEmployer(@RequestBody EmployerLazyDto employerLazyDto) {
+    public ResponseEntity<ResponseDto> updateEmployer(@Valid @RequestBody EmployerLazyDto employerLazyDto) {
 
         EmployerEagerDto employerValid;
         try {
@@ -156,10 +173,14 @@ public class EmployerController {
     /**
      * Service unavailable fallback response entity.
      *
-     * @param throwable the throwable
+     * @param ex the exception
      * @return the response entity
      */
-    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Throwable throwable) {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
+    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Exception ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(
+                ResponseDto.builder()
+                        .statusCode("503")
+                        .statusMsg(ex.getMessage() + " with the error message: " + ex.getCause().getMessage())
+                        .build());
     }
 }

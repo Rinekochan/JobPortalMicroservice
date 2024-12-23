@@ -9,6 +9,7 @@ import com.hoang.job.exception.ResourceNotFoundException;
 import com.hoang.job.mapper.JobMapper;
 import com.hoang.job.repository.JobRepository;
 import com.hoang.job.service.client.EmployerFeignClient;
+import com.hoang.job.service.client.JobApplicationFeignClient;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -24,6 +25,8 @@ public class JobServiceImpl implements JobService {
     private final JobRepository jobRepository;
 
     private final EmployerFeignClient employerFeignClient;
+
+    private final JobApplicationFeignClient jobApplicationFeignClient;
 
     @Override
     public JobEagerDto getJob(String id) {
@@ -96,6 +99,22 @@ public class JobServiceImpl implements JobService {
 
         jobRepository.deleteJobById(job.getId());
 
+        jobApplicationFeignClient.deleteJobApplicationByJobId(job.getId()); // If a job is deleted, all of its applications are deleted too
+
+        return !isDeleted;
+    }
+
+    @Override
+    public boolean deleteJobByPostedBy(String postedBy) {
+        boolean isDeleted = false;
+
+        List<JobLazyDto> jobsByPostedBy = getAllJobsByPostedBy(postedBy);
+
+        jobRepository.deleteJobByPostedBy(postedBy);
+
+        for (JobLazyDto job : jobsByPostedBy) {
+            jobApplicationFeignClient.deleteJobApplicationByJobId(job.getId()); // If a job is deleted, all of its applications are deleted too
+        }
         return !isDeleted;
     }
 }

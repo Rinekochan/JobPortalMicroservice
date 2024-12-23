@@ -8,6 +8,7 @@ import com.hoang.employer.exception.FeignConnectionFailure;
 import com.hoang.employer.exception.ResourceNotFoundException;
 import com.hoang.employer.mapper.EmployerMapper;
 import com.hoang.employer.repository.EmployerRepository;
+import com.hoang.employer.service.client.JobFeignClient;
 import com.hoang.employer.service.client.UserFeignClient;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * The type Employer service.
+ */
 @Service
 @AllArgsConstructor
 @Transactional
@@ -25,6 +29,8 @@ public class EmployerServiceImpl implements EmployerService {
     private final EmployerRepository employerRepository;
 
     private final UserFeignClient userFeignClient;
+
+    private final JobFeignClient jobFeignClient;
 
     @Override
     public EmployerEagerDto getEmployer(String id) {
@@ -52,6 +58,14 @@ public class EmployerServiceImpl implements EmployerService {
                             .companyId(employerEagerDto.getCompany().getId())
                             .build();
                 })
+                .toList();
+    }
+
+    @Override
+    public List<EmployerLazyDto> getAllEmployersByCompanyId(String companyId) {
+        return getAllEmployers()
+                .stream()
+                .filter(it -> it.getCompanyId().equals(companyId))
                 .toList();
     }
 
@@ -87,7 +101,7 @@ public class EmployerServiceImpl implements EmployerService {
         employerRepository.save(employerFromDto);
 
         if(employerEagerDto.getUser() != null) {
-            userFeignClient.updateUser(employerEagerDto.getUser());
+            userFeignClient.updateUser(employerEagerDto.getUser()); // If we update employer, we need to update its associated user
         }
 
         return !isUpdated;
@@ -105,9 +119,11 @@ public class EmployerServiceImpl implements EmployerService {
             throw new FeignConnectionFailure("There's a problem connecting with User, aborting operation");
         }
 
-        userFeignClient.deleteUser(id);
-
         employerRepository.deleteEmployerById(employer.getId());
+
+        userFeignClient.deleteUser(id); // If a candidate is deleted, delete its associated user
+
+        jobFeignClient.deleteJobByPostedBy(id); // If an employer is deleted, delete all of its jobs
 
         return !isDeleted;
     }

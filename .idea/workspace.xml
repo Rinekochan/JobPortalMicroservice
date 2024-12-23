@@ -5,159 +5,102 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59377659-7d31-47c0-873e-8313fb6d55e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConfigServer/src/main/resources/config/job.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConfigServer/src/main/resources/config/job_application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/aspect/AopPointcut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/aspect/LoggingAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/constant/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/controller/JobController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/ErrorResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/JobLazyDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/ResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/entity/listener/JobEventListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/exception/FeignConnectionFailure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/exception/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/repository/JobRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/JobService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/JobServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/client/EmployerFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/client/fallback/EmployerFallbackFeign.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/aspect/AopPointcut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/aspect/LoggingAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/constant/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/controller/JobApplicationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/CompanyDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/ErrorResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/JobApplicationEagerDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/JobApplicationLazyDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/ResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/entity/JobApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/entity/JobApplicationId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/entity/listener/JobApplicationEventListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/exception/DuplicateResourceException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/exception/FeignConnectionFailure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/exception/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/mapper/JobApplicationMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/repository/JobApplicationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/service/JobApplicationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/service/JobApplicationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/service/client/CandidateFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/service/client/JobFeignClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/service/client/fallback/CandidateFallbackFeign.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/service/client/fallback/JobFallbackFeign.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JobApplication/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/service/client/JobApplicationFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/service/client/fallback/JobApplicationFallbackFeign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/client/JobFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/client/fallback/JobFallbackFeign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/client/JobApplicationFeignClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/client/fallback/JobApplicationFallbackFeign.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/74e7129a-40a2-4756-982c-5edc4e40707f.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/74e7129a-40a2-4756-982c-5edc4e40707f/storage_v2/_src_/schema/employer_db.gsyBNg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/74e7129a-40a2-4756-982c-5edc4e40707f/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/74e7129a-40a2-4756-982c-5edc4e40707f/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/74e7129a-40a2-4756-982c-5edc4e40707f/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/74e7129a-40a2-4756-982c-5edc4e40707f/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9bf58479-5845-4350-8a72-a9c71ff57c95.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/dto/ApplicationDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/dto/CandidateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/CandidateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/dto/JobDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/JobDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/entity/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/entity/Candidate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/entity/Job.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/mapper/ApplicationMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/mapper/CandidateMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/java/com/hoang/application/mapper/JobMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/src/test/java/com/hoang/application/ApplicationTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Candidate/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/aspect/LoggingAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/aspect/LoggingAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/constant/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/controller/CandidateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/controller/CandidateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/dto/CandidateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/dto/CandidateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/dto/UserDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/service/CandidateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/service/CandidateServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/service/client/UserFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/service/client/UserFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Candidate/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConfigServer/src/main/resources/config/job_application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigServer/src/main/resources/config/job-application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/aspect/LoggingAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/aspect/LoggingAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/constant/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/controller/CompanyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/controller/CompanyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/controller/EmployerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/controller/EmployerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerEagerDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerLazyDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/mapper/EmployerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/mapper/EmployerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/CompanyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/CompanyDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/CompanyDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerEagerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerEagerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerLazyDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/EmployerLazyDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/repository/EmployerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/repository/EmployerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/client/UserFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/client/UserFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Job/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Job/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/JobApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/JobApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/ApplicationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/CompanyDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/CandidateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/EmployerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/constant/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/controller/JobController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/controller/JobController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/CompanyDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/CompanyDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/EmployerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/EmployerDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/JobDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/JobEagerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/JobEagerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/JobEagerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/JobLazyDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/JobLazyDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/entity/Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/entity/Candidate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/entity/Employer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/entity/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/entity/Job.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/mapper/ApplicationMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/mapper/CandidateMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/mapper/EmployerMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/mapper/JobMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/mapper/JobMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/mapper/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/repository/JobRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/repository/JobRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/JobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/JobService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/JobServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Job/src/main/java/com/hoang/job/service/JobServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/constant/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/controller/JobApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/controller/JobApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/CandidateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/CandidateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/CompanyDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/CompanyDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/EmployerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/EmployerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/JobApplicationEagerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/JobApplicationEagerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/JobApplicationLazyDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/JobApplicationLazyDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/JobDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/JobDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/mapper/JobApplicationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/mapper/JobApplicationMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/service/JobApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/service/JobApplicationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobApplication/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/User/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/UserApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/UserApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/aspect/LoggingAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/aspect/LoggingAspect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/User/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/User/src/main/java/com/hoang/user/dto/UserDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Rinekochan"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Rinekochan&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Rinekochan/JobPortalMicroservice.git",
-    "accountId": "0a69146c-dded-4080-aafe-cc243926d9a0"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Rinekochan/JobPortalMicroservice.git&quot;,
+    &quot;accountId&quot;: &quot;0a69146c-dded-4080-aafe-cc243926d9a0&quot;
   }
-}]]></component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2qa5SyWkUnKheuSPSfgVvu42XxM" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -180,16 +123,30 @@
     "Spring Boot.UserApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/JobPortalMicroservice/Candidate/src/main/java/com/hoang/candidate/service/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
+    "settings.editor.selected.configurable": "debugger.stepping",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JobPortalMicroservice\Candidate\src\main\java\com\hoang\candidate\service\client" />
+      <recent name="E:\JobPortalMicroservice\Employer\src\main\java\com\hoang\employer\service\client" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.hoang.candidate.service.client.fallback" />
+      <recent name="com.hoang.employer.service.client.fallback" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -200,7 +157,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.JobApplication">
+  <component name="RunManager" selected="Spring Boot.EmployerApplication">
     <configuration name="CandidateApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="Candidate" />
@@ -257,12 +214,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.CandidateApplication" />
+      <item itemvalue="Spring Boot.JobApplicationApplication" />
+      <item itemvalue="Spring Boot.ConfigServerApplication" />
+      <item itemvalue="Spring Boot.EmployerApplication" />
+      <item itemvalue="Spring Boot.EurekaServerApplication" />
+      <item itemvalue="Spring Boot.JobApplication" />
+      <item itemvalue="Spring Boot.UserApplication" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
       </set>
     </attachedChunks>
   </component>
@@ -275,10 +241,46 @@
       <option name="presentableId" value="Default" />
       <updated>1734887853939</updated>
       <workItem from="1734887855929" duration="1614000" />
+      <workItem from="1734922415342" duration="14690000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Candidate/src/main/java/com/hoang/candidate/service/CandidateServiceImpl.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerServiceImpl.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerServiceImpl.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Employer/src/main/java/com/hoang/employer/service/EmployerServiceImpl.java</url>
+          <line>125</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/JobApplication/src/main/java/com/hoang/jobapplication/service/JobApplicationServiceImpl.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -31,7 +31,7 @@ public class LoggingAspect {
         } catch (Throwable ex) {
             throw new RuntimeException(
                     "Error in method: " + joinPoint.getSignature()
-                            + " with arguments: " + java.util.Arrays.toString(joinPoint.getArgs()), ex);
+                            + " because of " + ex.getMessage(), ex);
         } finally {
             /* Record the duration time of the method */
             long end = System.currentTimeMillis();

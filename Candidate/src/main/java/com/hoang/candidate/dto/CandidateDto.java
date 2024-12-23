@@ -1,5 +1,8 @@
 package com.hoang.candidate.dto;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -16,12 +19,16 @@ public class CandidateDto implements Serializable {
 
     private String id;
 
+    @Size(max = 255, message = "The length of the skills should not be bigger than 255 chars")
     private String skills;
 
+    @Size(max = 255, message = "The length of the experience should not be bigger than 255 chars")
     private String experience;
 
+    @Size(max = 255, message = "The length of the description should not be bigger than 255 chars")
     private String description;
 
+    @Valid
     private UserDto user;
 
     @Override

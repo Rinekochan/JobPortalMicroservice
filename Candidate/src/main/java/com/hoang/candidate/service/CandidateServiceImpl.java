@@ -7,6 +7,7 @@ import com.hoang.candidate.exception.FeignConnectionFailure;
 import com.hoang.candidate.exception.ResourceNotFoundException;
 import com.hoang.candidate.mapper.CandidateMapper;
 import com.hoang.candidate.repository.CandidateRepository;
+import com.hoang.candidate.service.client.JobApplicationFeignClient;
 import com.hoang.candidate.service.client.UserFeignClient;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,8 @@ public class CandidateServiceImpl implements CandidateService {
     private final CandidateRepository candidateRepository;
 
     private final UserFeignClient userFeignClient;
+
+    private final JobApplicationFeignClient jobApplicationFeignClient;
 
     @Override
     public CandidateDto getCandidate(String id) {
@@ -56,7 +59,7 @@ public class CandidateServiceImpl implements CandidateService {
         HttpStatusCode statusCode = userFeignClient.createUser(candidateDto.getUser()).getStatusCode();
 
         if(statusCode == HttpStatus.SERVICE_UNAVAILABLE) { // If we can't create User, don't create Candidate
-            candidateRepository.delete(candidate);
+            candidateRepository.deleteCandidateById(candidate.getId());
             throw new FeignConnectionFailure("There's a problem connecting with User, aborting operation");
         }
 
@@ -100,9 +103,11 @@ public class CandidateServiceImpl implements CandidateService {
             throw new FeignConnectionFailure("There's a problem connecting with User, aborting operation");
         }
 
-        userFeignClient.deleteUser(candidate.getId());
+        userFeignClient.deleteUser(candidate.getId()); // If a candidate is deleted, delete its associated user
 
         candidateRepository.deleteCandidateById(candidate.getId());
+
+        jobApplicationFeignClient.deleteJobApplicationByCandidateId(id); // If a candidate is deleted, delete all of its application
 
         return !isDeleted;
     }

@@ -15,4 +15,6 @@ public interface JobRepository extends MongoRepository<Job, String> {
     List<Job> getJobsByPostedBy(String postedBy);
 
     void deleteJobById(String id);
+
+    void deleteJobByPostedBy(String postedBy);
 }

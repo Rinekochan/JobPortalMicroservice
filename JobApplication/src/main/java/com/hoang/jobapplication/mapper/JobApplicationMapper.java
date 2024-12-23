@@ -4,6 +4,7 @@ package com.hoang.jobapplication.mapper;
 import com.hoang.jobapplication.dto.JobApplicationEagerDto;
 import com.hoang.jobapplication.dto.JobApplicationLazyDto;
 import com.hoang.jobapplication.entity.JobApplication;
+import com.hoang.jobapplication.entity.JobApplicationId;
 
 public class JobApplicationMapper {
 
@@ -11,7 +12,7 @@ public class JobApplicationMapper {
 
     public static JobApplication mapToJobApplicationLazy(JobApplicationLazyDto jobApplicationLazyDto) {
         return JobApplication.builder()
-                .id(jobApplicationLazyDto.getId())
+                .id(new JobApplicationId(jobApplicationLazyDto.getJobId(), jobApplicationLazyDto.getCandidateId()))
                 .applicationDate(jobApplicationLazyDto.getApplicationDate())
                 .status(jobApplicationLazyDto.getStatus())
                 .build();
@@ -19,7 +20,8 @@ public class JobApplicationMapper {
 
     public static JobApplicationLazyDto mapToJobApplicationLazyDto(JobApplication jobApplication) {
         return JobApplicationLazyDto.builder()
-                .id(jobApplication.getId())
+                .jobId(jobApplication.getId().getJobId())
+                .candidateId(jobApplication.getId().getCandidateId())
                 .applicationDate(jobApplication.getApplicationDate())
                 .status(jobApplication.getStatus())
                 .build();

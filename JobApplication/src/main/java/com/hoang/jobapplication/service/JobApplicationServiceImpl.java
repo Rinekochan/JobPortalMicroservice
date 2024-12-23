@@ -68,10 +68,10 @@ public class JobApplicationServiceImpl implements JobApplicationService {
 
     @Override
     public JobApplication createJobApplication(JobApplicationLazyDto jobApplicationLazyDto) {
-        String jobId = jobApplicationLazyDto.getId().getJobId();
-        String candidateId = jobApplicationLazyDto.getId().getCandidateId();
+        String jobId = jobApplicationLazyDto.getJobId();
+        String candidateId = jobApplicationLazyDto.getCandidateId();
 
-        if(getJobApplication(jobId, candidateId) != null) {
+        if((jobApplicationRepository.getJobApplicationById(new JobApplicationId(jobId, candidateId))).isPresent()) {
             throw new DuplicateResourceException("Resource with the id of " + jobId
                     + " and " + candidateId + " already exists");
         }
@@ -84,8 +84,8 @@ public class JobApplicationServiceImpl implements JobApplicationService {
         boolean isUpdated = false;
 
         JobApplication jobApplication = JobApplicationMapper.mapToJobApplicationEager(getJobApplication
-                (jobApplicationLazyDto.getId().getJobId(), jobApplicationLazyDto.getId().getCandidateId()));
-        jobApplication.setId(jobApplicationLazyDto.getId());
+                (jobApplicationLazyDto.getJobId(), jobApplicationLazyDto.getCandidateId()));
+        jobApplication.setId(new JobApplicationId(jobApplicationLazyDto.getJobId(), jobApplicationLazyDto.getCandidateId()));
 
         JobApplication jobApplicationFromDto = JobApplicationMapper.mapToJobApplicationLazy(jobApplicationLazyDto);
 

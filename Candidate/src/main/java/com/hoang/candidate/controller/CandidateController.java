@@ -7,6 +7,7 @@ import com.hoang.candidate.service.CandidateService;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +56,7 @@ public class CandidateController {
     @Operation(summary = "CREATE CANDIDATE")
     @PostMapping("/create")
     @Retry(name = "createCandidate", fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> createCandidate(@RequestBody CandidateDto candidateDto) {
+    public ResponseEntity<ResponseDto> createCandidate(@Valid @RequestBody CandidateDto candidateDto) {
         Candidate candidate = candidateService.createCandidate(candidateDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -75,7 +76,7 @@ public class CandidateController {
     @Operation(summary = "UPDATE CANDIDATE")
     @PutMapping("/update")
     @Retry(name = "updateCandidate", fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> updateCandidate(@RequestBody CandidateDto candidateDto) {
+    public ResponseEntity<ResponseDto> updateCandidate(@Valid @RequestBody CandidateDto candidateDto) {
         boolean isUpdated = candidateService.updateCandidate(candidateDto);
         if (isUpdated) {
             return ResponseEntity
@@ -125,10 +126,14 @@ public class CandidateController {
     /**
      * Service unavailable fallback response entity.
      *
-     * @param throwable the throwable
+     * @param ex the exception
      * @return the response entity
      */
-    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Throwable throwable) {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
+    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Exception ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(
+                ResponseDto.builder()
+                        .statusCode("503")
+                        .statusMsg(ex.getMessage() + " with the error message: " + ex.getCause().getMessage())
+                        .build());
     }
 }

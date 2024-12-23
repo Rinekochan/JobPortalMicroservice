@@ -8,6 +8,7 @@ import com.hoang.job.service.JobService;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -82,7 +83,7 @@ public class JobController {
     @Operation(summary = "CREATE JOB")
     @PostMapping("/create")
     @Retry(name = "createJob", fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> createJob(@RequestBody JobLazyDto jobLazyDto) {
+    public ResponseEntity<ResponseDto> createJob(@Valid @RequestBody JobLazyDto jobLazyDto) {
         Job job = jobService.createJob(jobLazyDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -102,7 +103,7 @@ public class JobController {
     @Operation(summary = "UPDATE JOB")
     @PutMapping("/update")
     @Retry(name = "updateJob", fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> updateJob(@RequestBody JobLazyDto jobLazyDto) {
+    public ResponseEntity<ResponseDto> updateJob(@Valid @RequestBody JobLazyDto jobLazyDto) {
         boolean isUpdated = jobService.updateJob(jobLazyDto);
         if (isUpdated) {
             return ResponseEntity
@@ -149,13 +150,39 @@ public class JobController {
         }
     }
 
+    @Operation(summary = "DELETE ALL JOBS BY POSTED BY")
+    @DeleteMapping("/delete/posted-by")
+    @Retry(name = "deleteJobByPostedBy", fallbackMethod = "serviceUnavailableFallback")
+    public ResponseEntity<ResponseDto> deleteJobByPostedBy(@RequestParam String id) {
+        boolean isDeleted = jobService.deleteJobByPostedBy(id);
+        if (isDeleted) {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(ResponseDto.builder()
+                            .statusCode("200")
+                            .statusMsg("Delete request processed successfully")
+                            .build());
+        } else {
+            return ResponseEntity
+                    .status(HttpStatus.EXPECTATION_FAILED)
+                    .body(ResponseDto.builder()
+                            .statusCode("417")
+                            .statusMsg("Delete operation failed")
+                            .build());
+        }
+    }
+
     /**
      * Service unavailable fallback response entity.
      *
-     * @param throwable the throwable
+     * @param ex the exception
      * @return the response entity
      */
-    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Throwable throwable) {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
+    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Exception ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(
+                ResponseDto.builder()
+                        .statusCode("503")
+                        .statusMsg(ex.getMessage() + " with the error message: " + ex.getCause().getMessage())
+                        .build());
     }
 }

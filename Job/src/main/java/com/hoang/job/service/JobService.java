@@ -65,4 +65,13 @@ public interface JobService {
      * @return the boolean
      */
     boolean deleteJob(String id);
+
+
+    /**
+     * Delete job by posted.
+     *
+     * @param postedBy the posted by
+     * @return the boolean
+     */
+    boolean deleteJobByPostedBy(String postedBy);
 }

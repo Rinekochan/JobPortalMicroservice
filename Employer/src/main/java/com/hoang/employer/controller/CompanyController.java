@@ -7,6 +7,7 @@ import com.hoang.employer.service.CompanyService;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +56,7 @@ public class CompanyController {
     @Operation(summary = "CREATE COMPANY")
     @PostMapping("/create")
     @Retry(name = "createCompany", fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> createCompany(@RequestBody CompanyDto companyDto) {
+    public ResponseEntity<ResponseDto> createCompany(@Valid @RequestBody CompanyDto companyDto) {
         Company company = companyService.createCompany(companyDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -75,7 +76,7 @@ public class CompanyController {
     @Operation(summary = "UPDATE COMPANY")
     @PutMapping("/update")
     @Retry(name = "updateCompany", fallbackMethod = "serviceUnavailableFallback")
-    public ResponseEntity<ResponseDto> updateCompany(@RequestBody CompanyDto companyDto) {
+    public ResponseEntity<ResponseDto> updateCompany(@Valid @RequestBody CompanyDto companyDto) {
         boolean isUpdated = companyService.updateCompany(companyDto);
         if (isUpdated) {
             return ResponseEntity
@@ -125,10 +126,14 @@ public class CompanyController {
     /**
      * Service unavailable fallback response entity.
      *
-     * @param throwable the throwable
+     * @param ex the exception
      * @return the response entity
      */
-    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Throwable throwable) {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null);
+    public ResponseEntity<ResponseDto> serviceUnavailableFallback(Exception ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(
+                ResponseDto.builder()
+                        .statusCode("503")
+                        .statusMsg(ex.getMessage() + " with the error message: " + ex.getCause().getMessage())
+                        .build());
     }
 }

@@ -1,5 +1,7 @@
 package com.hoang.jobapplication.dto;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -16,8 +18,10 @@ public class EmployerDto implements Serializable {
 
     private String id;
 
+    @Valid
     private UserDto user;
 
+    @Valid
     private CompanyDto company;
 
     @Override

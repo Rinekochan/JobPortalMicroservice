@@ -27,6 +27,14 @@ public interface EmployerService {
     List<EmployerLazyDto> getAllEmployers();
 
     /**
+     * Gets all employers by company id.
+     *
+     * @param companyId the company id
+     * @return the all employers by company id
+     */
+    List<EmployerLazyDto> getAllEmployersByCompanyId(String companyId);
+
+    /**
      * Create employer.
      *
      * @param userDto the user dto
