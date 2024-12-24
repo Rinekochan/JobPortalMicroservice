@@ -1,6 +1,6 @@
-package com.hoang.job.exception;
+package com.hoang.notification.exception;
 
-import com.hoang.job.dto.ErrorResponseDto;
+import com.hoang.notification.dto.ErrorResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -47,12 +47,12 @@ public class GlobalExceptionHandler  extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponseDto> handleResourceNotFoundException(ResourceNotFoundException exception,
-                                                                            WebRequest webRequest) {
+    @ExceptionHandler(FeignConnectionFailure.class)
+    public ResponseEntity<ErrorResponseDto> handleFeignConnectionFailure(FeignConnectionFailure exception,
+                                                                         WebRequest webRequest) {
         ErrorResponseDto errorResponseDTO = ErrorResponseDto.builder()
                 .apiPath(webRequest.getDescription(false))
-                .errorCode(HttpStatus.NOT_FOUND)
+                .errorCode(HttpStatus.SERVICE_UNAVAILABLE)
                 .errorMessage(exception.getMessage())
                 .errorTime(LocalDateTime.now())
                 .build();

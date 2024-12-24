@@ -1,6 +1,5 @@
 package com.hoang.jobapplication.dto;
 
-import com.hoang.jobapplication.entity.JobApplicationId;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;

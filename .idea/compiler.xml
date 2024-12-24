@@ -22,10 +22,25 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="Candidate" />
-        <module name="JobApplication" />
         <module name="User" />
         <module name="Job" />
         <module name="Employer" />
+      </profile>
+      <profile name="Annotation profile for Notification" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath>
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="JobApplication" />
+        <module name="Notification" />
+      </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="GatewayServer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -38,8 +53,10 @@
       <module name="ConfigServer" options="-parameters" />
       <module name="Employer" options="-parameters" />
       <module name="EurekaServer" options="-parameters" />
+      <module name="GatewayServer" options="-parameters" />
       <module name="Job" options="-parameters" />
       <module name="JobApplication" options="-parameters" />
+      <module name="Notification" options="-parameters" />
       <module name="User" options="-parameters" />
     </option>
   </component>

@@ -1,23 +1,16 @@
 package com.hoang.notification.service;
 
-import com.hoang.notification.dto.EmailDetailDto;
+import com.hoang.notification.dto.EmailRequestDto;
 
 /**
  * The interface Email service.
  */
-public interface EmailService {
-
-    /**
-     * Send hello world email.
-     *
-     * @param email the email
-     */
-    void sendHelloWorldEmail(EmailDetailDto email);
+public interface NotificationService {
 
     /**
      * Send notification email.
      *
-     * @param email the email
+     * @param emailRequest the email
      */
-    void sendNotificationEmail(EmailDetailDto email);
+    void sendNotificationEmail(EmailRequestDto emailRequest);
 }

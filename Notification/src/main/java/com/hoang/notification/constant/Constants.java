@@ -1,4 +1,4 @@
-package com.hoang.job.constant;
+package com.hoang.notification.constant;
 
 public final class Constants {
 
@@ -6,8 +6,8 @@ public final class Constants {
         // restrict instantiation
     }
 
-    public static final String JOB_TAG = "Job";
+    public static final String NOTIFICATION_TAG = "Notification";
 
-    public static final String FEIGN_CLIENT_ERROR = "Unable to resolve User connection";
+    public static final String FEIGN_CLIENT_ERROR = "Unable to resolve ... connection";
 
 }

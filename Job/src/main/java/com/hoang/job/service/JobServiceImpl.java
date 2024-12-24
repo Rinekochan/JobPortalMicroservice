@@ -4,15 +4,12 @@ import com.hoang.job.constant.Constants;
 import com.hoang.job.dto.JobEagerDto;
 import com.hoang.job.dto.JobLazyDto;
 import com.hoang.job.entity.Job;
-import com.hoang.job.exception.FeignConnectionFailure;
 import com.hoang.job.exception.ResourceNotFoundException;
 import com.hoang.job.mapper.JobMapper;
 import com.hoang.job.repository.JobRepository;
 import com.hoang.job.service.client.EmployerFeignClient;
 import com.hoang.job.service.client.JobApplicationFeignClient;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

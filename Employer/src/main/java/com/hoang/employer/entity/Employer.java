@@ -3,7 +3,6 @@ package com.hoang.employer.entity;
 import com.hoang.employer.entity.generator.GeneratedId;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Setter

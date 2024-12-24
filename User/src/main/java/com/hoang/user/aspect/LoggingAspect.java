@@ -1,6 +1,5 @@
 package com.hoang.user.aspect;
 
-import com.hoang.user.constant.Constants;
 import com.hoang.user.exception.ResourceNotFoundException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

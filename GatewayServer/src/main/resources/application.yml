@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: "gateway"
+  config:
+    import: "optional:configserver:http://localhost:5000/"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 2s
+
+info:
+  app:
+    name: "gateway"
+    description: "Gateway Server Application"
+    version: "1.0.0"
+
+logging:
+  level:
+    com:
+      hoang:
+        gatewayserver: DEBUG
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+

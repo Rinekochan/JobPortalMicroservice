@@ -1,4 +1,4 @@
-package com.hoang.job.aspect;
+package com.hoang.notification.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -6,26 +6,23 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class AopPointcut {
 
-    @Pointcut("execution(* com.hoang.job.service.*.*(..))")
+    @Pointcut("execution(* com.hoang.notification.service.*.*(..))")
     public void forServicePackage() {}
 
-    @Pointcut("execution(* com.hoang.job.controller.*.*(..))")
+    @Pointcut("execution(* com.hoang.notification.controller.*.*(..))")
     public void forControllerPackage() {}
 
-    @Pointcut("execution(* com.hoang.job.entity.*.set*(..))")
-    public void forEntitySetter() {}
+    @Pointcut("execution(* com.hoang.notification.service.client.*.*(..))")
+    public void forFeignClientPackage() {}
 
-    @Pointcut("execution(* com.hoang.job.entity.*.get*(..))")
-    public void forEntityGetter() {}
-
-    @Pointcut("execution(* com.hoang.job.dto.*.set*(..))")
+    @Pointcut("execution(* com.hoang.notification.dto.*.set*(..))")
     public void forDtoSetter() {}
 
-    @Pointcut("execution(* com.hoang.job.dto.*.get*(..))")
+    @Pointcut("execution(* com.hoang.notification.dto.*.get*(..))")
     public void forDtoGetter() {}
 
     @Pointcut("forServicePackage() || forControllerPackage() " +
-            "|| forEntitySetter() || forEntityGetter() " +
+            "|| forFeignClientPackage() " +
             "|| forDtoSetter() || forDtoGetter()")
     public void forOperation() {}
 }

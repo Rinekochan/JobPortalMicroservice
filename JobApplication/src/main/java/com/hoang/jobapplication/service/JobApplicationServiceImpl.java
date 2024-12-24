@@ -1,8 +1,7 @@
 package com.hoang.jobapplication.service;
 
 import com.hoang.jobapplication.constant.Constants;
-import com.hoang.jobapplication.dto.JobApplicationEagerDto;
-import com.hoang.jobapplication.dto.JobApplicationLazyDto;
+import com.hoang.jobapplication.dto.*;
 import com.hoang.jobapplication.entity.JobApplication;
 import com.hoang.jobapplication.entity.JobApplicationId;
 import com.hoang.jobapplication.exception.DuplicateResourceException;
@@ -11,6 +10,7 @@ import com.hoang.jobapplication.mapper.JobApplicationMapper;
 import com.hoang.jobapplication.repository.JobApplicationRepository;
 import com.hoang.jobapplication.service.client.CandidateFeignClient;
 import com.hoang.jobapplication.service.client.JobFeignClient;
+import com.hoang.jobapplication.service.client.NotificationFeignClient;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +25,8 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     private final CandidateFeignClient candidateFeignClient;
 
     private final JobFeignClient jobFeignClient;
+
+    private final NotificationFeignClient notificationFeignClient;
 
     @Override
     public JobApplicationEagerDto getJobApplication(String jobId, String candidateId) {
@@ -68,6 +70,7 @@ public class JobApplicationServiceImpl implements JobApplicationService {
 
     @Override
     public JobApplication createJobApplication(JobApplicationLazyDto jobApplicationLazyDto) {
+
         String jobId = jobApplicationLazyDto.getJobId();
         String candidateId = jobApplicationLazyDto.getCandidateId();
 
@@ -76,16 +79,21 @@ public class JobApplicationServiceImpl implements JobApplicationService {
                     + " and " + candidateId + " already exists");
         }
 
+        // Send notification email when the candidate successfully submit job application
+        sendNotification(jobId, candidateId, true);
         return jobApplicationRepository.save(JobApplicationMapper.mapToJobApplicationLazy(jobApplicationLazyDto));
     }
 
     @Override
     public boolean updateJobApplication(JobApplicationLazyDto jobApplicationLazyDto) {
+
         boolean isUpdated = false;
+        String jobId = jobApplicationLazyDto.getJobId();
+        String candidateId = jobApplicationLazyDto.getCandidateId();
 
         JobApplication jobApplication = JobApplicationMapper.mapToJobApplicationEager(getJobApplication
-                (jobApplicationLazyDto.getJobId(), jobApplicationLazyDto.getCandidateId()));
-        jobApplication.setId(new JobApplicationId(jobApplicationLazyDto.getJobId(), jobApplicationLazyDto.getCandidateId()));
+                (jobId, candidateId));
+        jobApplication.setId(new JobApplicationId(jobId, candidateId));
 
         JobApplication jobApplicationFromDto = JobApplicationMapper.mapToJobApplicationLazy(jobApplicationLazyDto);
 
@@ -93,13 +101,39 @@ public class JobApplicationServiceImpl implements JobApplicationService {
             return !isUpdated;
         }
 
+        // Send notification email when the employer successfully update the job application status
+        sendNotification(jobId, candidateId, false);
         jobApplicationRepository.save(jobApplicationFromDto);
 
         return !isUpdated;
     }
 
+    private void sendNotification(String jobId, String candidateId, boolean isCreated) {
+
+        String content = isCreated ? Constants.JOB_APPLICATION_CREATION : Constants.JOB_APPLICATION_UPDATE;
+
+        CandidateDto candidate = candidateFeignClient.getCandidate(candidateId).getBody();
+        assert candidate != null;
+        notificationFeignClient.sendNotification(
+                EmailRequestDto.builder()
+                        .to(List.of(
+                                RecipientDto.builder()
+                                        .email(candidate.getUser().getEmail())
+                                        .name(candidate.getUser().getName())
+                                        .build()
+                        ))
+                        .htmlContent(
+                                "<h3> Hi, " + candidate.getUser().getName() + "</h3>"
+                                + content
+                                + String.format("<a href='localhost:3000/api/application?jobId=%s&candidateId=%s'>Your application</a>", jobId, candidateId))
+                        .subject(isCreated ? "Job Application Success" : "Job Application Update")
+                        .build()
+        );
+    }
+
     @Override
     public boolean deleteJobApplication(String jobId, String candidateId) {
+
         boolean isDeleted = false;
 
         JobApplication jobApplication = JobApplicationMapper.mapToJobApplicationEager
@@ -112,6 +146,7 @@ public class JobApplicationServiceImpl implements JobApplicationService {
 
     @Override
     public boolean deleteAllJobApplicationsByJobId(String jobId) {
+
         boolean isDeleted = false;
 
         jobApplicationRepository.deleteJobApplicationsById_JobId(jobId);
@@ -121,6 +156,7 @@ public class JobApplicationServiceImpl implements JobApplicationService {
 
     @Override
     public boolean deleteAllJobApplicationsByCandidateId(String candidateId) {
+
         boolean isDeleted = false;
 
         jobApplicationRepository.deleteJobApplicationsById_CandidateId(candidateId);

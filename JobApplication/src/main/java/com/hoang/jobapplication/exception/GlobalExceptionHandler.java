@@ -59,6 +59,18 @@ public class GlobalExceptionHandler  extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorResponseDTO, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(FeignConnectionFailure.class)
+    public ResponseEntity<ErrorResponseDto> handleFeignConnectionFailure(FeignConnectionFailure exception,
+                                                                         WebRequest webRequest) {
+        ErrorResponseDto errorResponseDTO = ErrorResponseDto.builder()
+                .apiPath(webRequest.getDescription(false))
+                .errorCode(HttpStatus.SERVICE_UNAVAILABLE)
+                .errorMessage(exception.getMessage())
+                .errorTime(LocalDateTime.now())
+                .build();
+        return new ResponseEntity<>(errorResponseDTO, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(DuplicateResourceException.class)
     public ResponseEntity<ErrorResponseDto> handleDuplicateResourceException(DuplicateResourceException exception,
                                                                             WebRequest webRequest) {

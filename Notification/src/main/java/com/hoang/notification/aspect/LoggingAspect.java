@@ -1,6 +1,5 @@
-package com.hoang.job.aspect;
+package com.hoang.notification.aspect;
 
-import com.hoang.job.exception.ResourceNotFoundException;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,7 +13,7 @@ public class LoggingAspect {
 
     Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Around("com.hoang.job.aspect.AopPointcut.forOperation()")
+    @Around("com.hoang.notification.aspect.AopPointcut.forOperation()")
     public Object aroundService(ProceedingJoinPoint joinPoint) throws Throwable {
 
         String method = joinPoint.getSignature().toShortString();
@@ -26,8 +25,6 @@ public class LoggingAspect {
 
         try {
             result = joinPoint.proceed();
-        } catch (ResourceNotFoundException ex) {
-            throw ex;
         } catch (Throwable ex) {
             throw new RuntimeException(
                     "Error in method: " + joinPoint.getSignature()

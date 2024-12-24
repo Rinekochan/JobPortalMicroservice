@@ -1,6 +1,5 @@
 package com.hoang.candidate.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;

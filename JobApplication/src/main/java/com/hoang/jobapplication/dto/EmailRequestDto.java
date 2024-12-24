@@ -1,4 +1,4 @@
-package com.hoang.notification.dto;
+package com.hoang.jobapplication.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
