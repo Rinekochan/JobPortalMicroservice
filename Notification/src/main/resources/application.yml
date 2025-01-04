@@ -7,6 +7,20 @@ spring:
     active: "default"
   config:
     import: "optional:configserver:http://localhost:5000/"
+  cloud:
+    function:
+      definition: email
+    stream:
+      bindings:
+        email-in-0:
+          destination: send-communication
+          group: ${spring.application.name}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    connection-timeout: 10s
 
 logging:
   level:

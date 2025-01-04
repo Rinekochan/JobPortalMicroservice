@@ -6,12 +6,13 @@ import com.hoang.jobapplication.entity.JobApplication;
 import com.hoang.jobapplication.entity.JobApplicationId;
 import com.hoang.jobapplication.exception.DuplicateResourceException;
 import com.hoang.jobapplication.exception.ResourceNotFoundException;
+import com.hoang.jobapplication.helper.NotificationHelper;
 import com.hoang.jobapplication.mapper.JobApplicationMapper;
 import com.hoang.jobapplication.repository.JobApplicationRepository;
 import com.hoang.jobapplication.service.client.CandidateFeignClient;
 import com.hoang.jobapplication.service.client.JobFeignClient;
-import com.hoang.jobapplication.service.client.NotificationFeignClient;
 import lombok.AllArgsConstructor;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class JobApplicationServiceImpl implements JobApplicationService {
 
     private final JobFeignClient jobFeignClient;
 
-    private final NotificationFeignClient notificationFeignClient;
+    private final StreamBridge streamBridge;
 
     @Override
     public JobApplicationEagerDto getJobApplication(String jobId, String candidateId) {
@@ -109,27 +110,18 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     }
 
     private void sendNotification(String jobId, String candidateId, boolean isCreated) {
-
-        String content = isCreated ? Constants.JOB_APPLICATION_CREATION : Constants.JOB_APPLICATION_UPDATE;
-
         CandidateDto candidate = candidateFeignClient.getCandidate(candidateId).getBody();
+        JobDto job = jobFeignClient.getJob(jobId).getBody();
         assert candidate != null;
-        notificationFeignClient.sendNotification(
-                EmailRequestDto.builder()
-                        .to(List.of(
-                                RecipientDto.builder()
-                                        .email(candidate.getUser().getEmail())
-                                        .name(candidate.getUser().getName())
-                                        .build()
-                        ))
-                        .htmlContent(
-                                "<h3> Hi, " + candidate.getUser().getName() + "</h3>"
-                                + content
-                                + String.format("<a href='localhost:3000/api/application?jobId=%s&candidateId=%s'>Your application</a>", jobId, candidateId))
-                        .subject(isCreated ? "Job Application Success" : "Job Application Update")
-                        .build()
-        );
+        assert job != null;
+
+        EmailRequestDto email = isCreated
+                ? NotificationHelper.buildJobCreateEmail(candidate, job)
+                : NotificationHelper.buildJobUpdateEmail(candidate, job);
+
+        streamBridge.send("sendCommunication-out-0", email);
     }
+
 
     @Override
     public boolean deleteJobApplication(String jobId, String candidateId) {
