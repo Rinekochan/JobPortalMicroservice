@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hoang</groupId>
-    <artifactId>ConfigServer</artifactId>
+    <artifactId>configserver</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ConfigServer</name>
     <description>ConfigServer</description>
@@ -93,6 +93,16 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <to>
+                        <image>hoang/${project.artifactId}:job_portal_microservice</image>
+                    </to>
                 </configuration>
             </plugin>
         </plugins>

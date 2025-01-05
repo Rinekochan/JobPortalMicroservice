@@ -1,0 +1,32 @@
+services:
+  network-deploy-service:
+    networks:
+      - hoang
+
+  microservice-base-config:
+    extends:
+      service: network-deploy-service
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+
+  microservice-configserver-config:
+    extends:
+      service: microservice-base-config
+    environment:
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:5000/
+
+  microservice-eureka-config:
+    extends:
+      service: microservice-configserver-config
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:6969/eureka/
+
+  microservice-mysql-config:
+    extends:
+      microservice-eureka-config
+    environment:
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+

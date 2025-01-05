@@ -1,32 +1,269 @@
 services:
-  user:
+  user_db:
     image: bitnami/mongodb:latest
-    container_name: User
+    container_name: user_db
     ports:
       - "27017:27017"
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
 
-  candidate:
+  candidate_db:
     image: bitnami/mongodb:latest
-    container_name: Candidate
+    container_name: candidate_db
     ports:
-      - "27027:27017"
+      - "27027:27027"
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
 
-  application:
+  job_application_db:
     image: bitnami/mongodb:latest
-    container_name: JobApplication
+    container_name: job_application_db
     ports:
-      - "27037:27017"
+      - "27037:27037"
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
 
-  job:
+  job_db:
     image: bitnami/mongodb:latest
-    container_name: Job
+    container_name: job_db
     ports:
-      - "27047:27017"
+      - "27047:27047"
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
 
-  employer:
+  employer_db:
     image: mysql:latest
-    container_name: Employer
+    container_name: employer_db
     ports:
       - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./Employer.sql:/docker-entrypoint-initdb.d/Employer.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+      interval: 10s
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
+  rabbit:
+    image: rabbitmq:4.0-management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+    extends:
+      file: common-config.yml
+      service: network-deploy-service
+
+  configserver:
+    image: "hoang/configserver:job_portal_microservice"
+    container_name: ConfigServer
+    ports:
+      - "5000:5000"
+    healthcheck:
+      test: "curl --fail --silent localhost:5000/actuator/health/readiness | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+
+  eurekaserver:
+    image: "hoang/eurekaserver:job_portal_microservice"
+    container_name: EurekaServer
+    ports:
+      - "6969:6969"
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:6969/actuator/health/readiness | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+  user:
+    image: "hoang/user:job_portal_microservice"
+    container_name: User
+    healthcheck:
+      test: "curl --fail --silent localhost:1000/actuator/health/readiness | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    depends_on:
+      configserver:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+      user_db:
+        condition: service_started
+    environment:
+      SPRING_APPLICATION_NAME: "user"
+      SPRING_DATA_MONGODB_DATABASE: user_db
+      SPRING_DATA_MONGODB_HOST: user_db
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_URI: mongodb://user_db:27017/user_db
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+  employer:
+    image: "hoang/employer:job_portal_microservice"
+    container_name: Employer
+    ports:
+      - "1500:1500"
+    healthcheck:
+      test: "curl --fail --silent localhost:1500/actuator/health/readiness | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    depends_on:
+      configserver:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+      employer_db:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "employer"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://employer_db:3306/employer_db"
+    extends:
+      file: common-config.yml
+      service: microservice-mysql-config
+
+  candidate:
+    image: "hoang/candidate:job_portal_microservice"
+    container_name: Candidate
+    ports:
+      - "2000:2000"
+    healthcheck:
+      test: "curl --fail --silent localhost:2000/actuator/health/readiness | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    depends_on:
+      configserver:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+      candidate_db:
+        condition: service_started
+    environment:
+      SPRING_APPLICATION_NAME: "candidate"
+      SPRING_DATA_MONGODB_DATABASE: candidate_db
+      SPRING_DATA_MONGODB_HOST: candidate_db
+      SPRING_DATA_MONGODB_PORT: 27027
+      SPRING_DATA_MONGODB_URI: mongodb://candidate_db:27027/candidate_db
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+  job:
+    image: "hoang/job:job_portal_microservice"
+    container_name: Job
+    ports:
+      - "2500:2500"
+    healthcheck:
+      test: "curl --fail --silent localhost:2500/actuator/health/readiness | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    depends_on:
+      configserver:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+      job_db:
+        condition: service_started
+    environment:
+      SPRING_APPLICATION_NAME: "job"
+      SPRING_DATA_MONGODB_DATABASE: job_db
+      SPRING_DATA_MONGODB_HOST: job_db
+      SPRING_DATA_MONGODB_PORT: 27047
+      SPRING_DATA_MONGODB_URI: mongodb://job_db:27047/job_db
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+  jobapplication:
+    image: "hoang/jobapplication:job_portal_microservice"
+    container_name: JobApplication
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: "curl --fail --silent localhost:3000/actuator/health/readiness | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    depends_on:
+      configserver:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+      job_application_db:
+        condition: service_started
+      rabbit:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "job-application"
+      SPRING_RABBITMQ_HOST: "rabbit"
+      SPRING_DATA_MONGODB_DATABASE: job_application_db
+      SPRING_DATA_MONGODB_HOST: job_application_db
+      SPRING_DATA_MONGODB_PORT: 27037
+      SPRING_DATA_MONGODB_URI: mongodb://job_application_db:27037/job_application_db
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+  notification:
+    image: "hoang/notification:job_portal_microservice"
+    container_name: Notification
+    healthcheck:
+      test: "curl --fail --silent localhost:4000/actuator/health/readiness | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    depends_on:
+      configserver:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+      rabbit:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "notification"
+      SPRING_RABBITMQ_HOST: "rabbit"
+    extends:
+      file: common-config.yml
+      service: microservice-eureka-config
+
+networks:
+  hoang:
+    driver: "bridge"

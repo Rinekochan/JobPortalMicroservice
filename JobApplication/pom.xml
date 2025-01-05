@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.neko</groupId>
-    <artifactId>JobApplication</artifactId>
+    <artifactId>jobapplication</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>JobApplication</name>
     <description>JobApplication</description>

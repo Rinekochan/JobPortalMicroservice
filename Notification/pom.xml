@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.hoang</groupId>
-    <artifactId>Notification</artifactId>
+    <artifactId>notification</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Notification</name>
     <description>Notification</description>
