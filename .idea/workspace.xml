@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59377659-7d31-47c0-873e-8313fb6d55e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docker-compose/Employer.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose/common-config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Candidate/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Candidate/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConfigServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigServer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConfigServer/src/main/resources/config/notification.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigServer/src/main/resources/config/notification.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Employer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Employer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EurekaServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/EurekaServer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GatewayServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/GatewayServer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Job/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Job/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JobApplication/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/JobApplication/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Notification/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Notification/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/User/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -240,7 +227,8 @@
       <workItem from="1735915766400" duration="901000" />
       <workItem from="1735984536814" duration="12031000" />
       <workItem from="1736003716870" duration="8547000" />
-      <workItem from="1736074669870" duration="2261000" />
+      <workItem from="1736074669870" duration="2327000" />
+      <workItem from="1736175882263" duration="815000" />
     </task>
     <servers />
   </component>

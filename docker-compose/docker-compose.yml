@@ -12,7 +12,7 @@ services:
     image: bitnami/mongodb:latest
     container_name: candidate_db
     ports:
-      - "27027:27027"
+      - "27027:27017"
     extends:
       file: common-config.yml
       service: network-deploy-service
@@ -21,7 +21,7 @@ services:
     image: bitnami/mongodb:latest
     container_name: job_application_db
     ports:
-      - "27037:27037"
+      - "27037:27017"
     extends:
       file: common-config.yml
       service: network-deploy-service
@@ -30,7 +30,7 @@ services:
     image: bitnami/mongodb:latest
     container_name: job_db
     ports:
-      - "27047:27047"
+      - "27047:27017"
     extends:
       file: common-config.yml
       service: network-deploy-service
@@ -121,10 +121,11 @@ services:
         condition: service_started
     environment:
       SPRING_APPLICATION_NAME: "user"
+      SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: admin
       SPRING_DATA_MONGODB_DATABASE: user_db
       SPRING_DATA_MONGODB_HOST: user_db
       SPRING_DATA_MONGODB_PORT: 27017
-      SPRING_DATA_MONGODB_URI: mongodb://user_db:27017/user_db
+      SPRING_DATA_MONGODB_URI: mongodb://user_db:27017/user_db?authSource=admin
     extends:
       file: common-config.yml
       service: microservice-eureka-config
@@ -174,10 +175,11 @@ services:
         condition: service_started
     environment:
       SPRING_APPLICATION_NAME: "candidate"
+      SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: admin
       SPRING_DATA_MONGODB_DATABASE: candidate_db
       SPRING_DATA_MONGODB_HOST: candidate_db
-      SPRING_DATA_MONGODB_PORT: 27027
-      SPRING_DATA_MONGODB_URI: mongodb://candidate_db:27027/candidate_db
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_URI: mongodb://candidate_db:27017/candidate_db?authSource=admin
     extends:
       file: common-config.yml
       service: microservice-eureka-config
@@ -201,11 +203,12 @@ services:
       job_db:
         condition: service_started
     environment:
-      SPRING_APPLICATION_NAME: "job"
-      SPRING_DATA_MONGODB_DATABASE: job_db
-      SPRING_DATA_MONGODB_HOST: job_db
-      SPRING_DATA_MONGODB_PORT: 27047
-      SPRING_DATA_MONGODB_URI: mongodb://job_db:27047/job_db
+        SPRING_APPLICATION_NAME: "job"
+        SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: admin
+        SPRING_DATA_MONGODB_DATABASE: job_db
+        SPRING_DATA_MONGODB_HOST: job_db
+        SPRING_DATA_MONGODB_PORT: 27017
+        SPRING_DATA_MONGODB_URI: mongodb://job_db:27017/job_db?authSource=admin
     extends:
       file: common-config.yml
       service: microservice-eureka-config
@@ -233,10 +236,11 @@ services:
     environment:
       SPRING_APPLICATION_NAME: "job-application"
       SPRING_RABBITMQ_HOST: "rabbit"
+      SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: admin
       SPRING_DATA_MONGODB_DATABASE: job_application_db
       SPRING_DATA_MONGODB_HOST: job_application_db
-      SPRING_DATA_MONGODB_PORT: 27037
-      SPRING_DATA_MONGODB_URI: mongodb://job_application_db:27037/job_application_db
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_URI: mongodb://job_application_db:27017/job_application_db?authSource=admin
     extends:
       file: common-config.yml
       service: microservice-eureka-config
